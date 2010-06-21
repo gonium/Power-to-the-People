@@ -3,6 +3,7 @@ bibtex=bibtex
 
 SRC=main.tex 
 SRC_ADDITIONAL=frontpage.tex einleitung.tex demandside.tex \
+			   umsetzung.tex
 			   #ch03/ch03.tex ch04/ch04.tex ch05/ch05.tex bib/bib.tex
 BIB=main.bib
 AUX=$(SRC:.tex=.aux)
