@@ -3,8 +3,8 @@ bibtex=bibtex
 
 SRC=main.tex 
 SRC_ADDITIONAL=frontpage.tex einleitung.tex demandside.tex \
-			   umsetzung.tex
-			   #ch03/ch03.tex ch04/ch04.tex ch05/ch05.tex bib/bib.tex
+			   umsetzung.tex risiken.tex anwendungen.tex \
+			   community.tex
 BIB=main.bib
 AUX=$(SRC:.tex=.aux)
 PDF=$(SRC:.tex=.pdf)
@@ -21,6 +21,9 @@ $(PDF): $(SRC) $(SRC_ADDITIONAL) $(BIB)
 	$(bibtex) $(AUX)
 	$(pdflatex) $<
 	$(pdflatex) $<
+
+view: pdf
+	open $(PDF)
 
 clean:
 	-rm -f *~
