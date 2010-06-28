@@ -1,0 +1,59 @@
+%/* vim: setformat tex
+%*/
+
+\section{Demand Side Management}\label{sec:demandside}
+Natürlich ist es erstrebenswert, absolut gesehen weniger Strom zu
+verbrauchen\footnote{Die Autoren sind sich darüber im klaren, dass Energie
+nicht verbraucht werden kann --- wir folgen jedoch dem allgemeinen
+Sprachgebrauch.}. Allerdings ist dies nicht das Ziel des Demand-Side
+Managements. Stattdessen wird hier versucht, den Verbrauch an die
+Erzeugung von Strom anzupassen. Dieses Verfahren ist seit langem in der
+Industrie üblich --- großen Verbrauchern aus der Industrie werden
+vergünstigte Preise eingeräumt, wenn dafür im Falle von Netzengpässen
+der Stromverbraucher abgeschaltet werden können. 
+
+Dazu teilt der Netzbetreiber dem Großverbraucher auf kurze Sicht (15
+Minuten) mit, dass einige Aggregate abzuschalten sind. Daraufhin werden
+Spitzen im Strombedarf gekappt.
+
+TODO: Verschiedene Szenarien, siehe eEnergy-Studie
+
+Das gleiche Grundprinzip kann natürlich auch im Haushalt umgesetzt
+werden. Hier muss es jedoch das Ziel sein, eine kostengünstige Umsetzung
+ohne Komforteinbußen für den Verbraucher zu realisieren. Dazu spielt
+natürlich auch der Preis eine Rolle. Zudem ist der verschiebbare
+Stromverbrauch eines einzelnen Verbrauchers nicht groß im Vergleich zu
+der benötigten Ausgleichsenergie. Allerdings kann durch die Kombination
+einer hinreichend großen Anzahl an Haushalten ein signifikanter
+Verbrauch verschoben werden. Diese Ansammlung von Haushalten und
+natürlich auch Gewerbebetrieben kann als eine Einheit angesprochen
+werden, wenn sie zu einem \emph{virtuellen Verbraucher}
+zusammengeschlossen werden.
+
+TODO: Kommerzielles Modell. Wie kann Demand-Side Management im
+Privathaushalt nachhaltig werden? Angedacht ist der Verkauf der
+Ausgleichsenergie an den Netzbetreiber. Dieser müsste nicht zu hohen
+Preisen Strom kaufen bzw. verkaufen. Diese Marge kann sich der
+Netzbetreiber mit den Privathaushalten teilen. Dzu gründen die
+Privathaushalte eine Genossenschaft und verhandeln mit dem
+Netzbetreiber. Statt eines niedrigeren Strombezugspreis (vgl. Yello
+SmartMeter) kann der Preis hier freier verhandelt werden. Der Vertrieb
+der Stromversorger wird umgangen.
+
+Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
+Als großes verteiltes System muss die Umsetzung zu einem stabilen
+Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
+nicht zu Störungen des Gesamtsystems führen.
+
+Wir favorisieren dabei einen dezentralen Ansatz: Steuergeräte in den
+einzelnen Haushalten verhalten sich dabei autonom. Lediglich ein
+gewünschtes Lastprofil wird den Haushalten vorgegeben. Die einzelnen
+Haushalte entscheiden dann autonom, wie einzelne Geräte zu steuern sind.
+Die Verteilung des Lastprofils kann dabei durch standardisierte
+Protokolle über das Internet erfolgen.
+
+TODO: Modellierung von verschiedenen Lastgängen durch die Kombination
+von Schaltzeitpunkten und Gruppen von Haushalten / Gewerbebetrieben.
+Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
+pro Gruppe abrufen zu können. 
+

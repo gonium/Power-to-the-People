@@ -1,0 +1,40 @@
+%/* vim: setformat tex
+%*/
+
+\section{Umsetzung}\label{sec:umsetzung}
+
+Hier besteht die Gefahr, das Feld komplett den kommerziellen Anbietern
+zu überlassen. Dies ist nicht unbedingt im Sinne der privaten
+Verbraucher. Gleichzeitig werden auch kleinere Stadtwerke im Wettbewerb
+übervorteilt, wenn große Stromanbieter ihre Infrastrukturen auf ihren
+eigenen Gewinn hin optimieren. 
+
+Wir gehen daher einen anderen Weg und bauen auf ein Ökosystem von freien
+Lösungen. Dabei favorisieren wir Open-Source Projekte. Bei der Hardware
+setzen wir auf Consumer-Geräte, die einen hohen Verbreitungsgrad haben.
+Ein möglichst großer Anteil der Funktionen soll in Software
+implementiert werden, da diese quasi ohne weitere Kosten vervielfältigt
+werden kann.
+
+Home Integration:
+\begin{enumerate}
+  \item Bus System: Schwierig, da im Moment kaum nachrüstbare Lösungen
+	verfügbar sind. WLAN vs. digitalStrom vs. Pending?
+  \item Integration der einzelnen Geräte: Möglixhst über TCP/IP
+	ansprechbar (WLAN/Ethernet). Die einzelnen Funktionen müssen über
+	REST ansprechbar sein, einzelne Geräte sollen über DNSSD/Bonjour
+	auffindbar sein, jedes Gerät hat eine eindeutige, persistente ID.
+\end{enumerate}
+
+Dabei beachten: 
+\begin{enumerate}
+  \item Akzeptanz der Technologie bei den Anwendern: Diese müssen
+	jederzeit in der Lage sein, die vorgeschlagenen Schedules
+	abzulehnen. Visualisierung des Stromverbrauchs ist ebenso wichtig,
+	bzw. auch eine Studie, welche Visualisierungen denn Sinn machen.
+  \item Offenheit: Jederzeit soll eine Heiminstallation durch weitere
+	Geräte erweiterbar sein. Die Anbindung von bislang nicht
+	unterstützten Geräten soll durch kleine Adapter möglich sein.
+\end{enumerate}
+
+TODO: Architektur von mySmartGrid beschreiben.
