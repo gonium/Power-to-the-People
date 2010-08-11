@@ -7,12 +7,12 @@
 %\documentclass[BCOR=8.5mm,DIV=calc,open=right,pagesize=auto,a5paper]{scrbook}
 %\documentclass[12pt,BCOR=8.5mm]{scrbook}
 \documentclass[12pt,BCOR=8.5mm]{scrartcl}
-\renewcommand*\title{Draft Smart Grids}
-\renewcommand*\subtitle{e-Energy }
-\renewcommand*\author{Mathias Dalheimer}
+\title{Power to the People}
+\subtitle{Warum das Stromnetz Open-Source braucht}
+\author{Mathias Dalheimer}
 %% PDF SETUP
 \usepackage[pdftex, bookmarks, colorlinks, breaklinks,
-pdftitle={\title},pdfauthor={\author},plainpages=false]{hyperref}  
+pdftitle=\title,pdfauthor=\author,plainpages=false]{hyperref}  
 \hypersetup{linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,plainpages=false} 
 
 \clubpenalty=3000 % adjust for widows and orphans 10000 is max
@@ -79,14 +79,16 @@ pdftitle={\title},pdfauthor={\author},plainpages=false]{hyperref}
 
 %% Main.
 \begin{document}
+\maketitle
 \clearscrheadfoot
 \automark[chapter]{section}
 \lehead[]{\pagemark\hskip.5cm\vrule\hskip.5cm\title}
 \rohead[]{\headmark\hskip.5cm\vrule\hskip.5cm\pagemark} 
-\pagestyle{scrplain}
-\begin{titlepage}
-\input{frontpage}
-\end{titlepage}
+\title
+%\pagestyle{scrplain}
+%\begin{titlepage}
+%\input{frontpage}
+%\end{titlepage}
 %% frontmatter
 %%\input{frontmatter}
 %%\parindent.0cm
@@ -95,12 +97,413 @@ pdftitle={\title},pdfauthor={\author},plainpages=false]{hyperref}
 \parindent.4cm
 \parskip.0cm
 \pagestyle{scrheadings}
-\input{einleitung}
-\input{demandside}
-\input{umsetzung}
-\input{risiken}
-\input{anwendungen}
-\input{community}
+
+\section{Einleitung}
+Wenn morgens in Deutschland die Kaffeemaschinen angeschaltet werden,
+sorgt ein komplexes System dafür, dass der Tag gut anfängt: Unser
+Stromnetz. Das deutsche Stromnetz ist über die vergangenen 100 Jahre
+gewachsen und transportiert den Strom von Kraftwerken zu den
+Verbrauchern. Bildlich kann man sich das anhand des "`Stromsees"' vor
+Augen führen:
+
+\todo{Abbildung Stromsee}
+
+Die einzelnen Kraftwerke speisen die elektrische Energie in das Netz
+ein. Dort wird die Energie gesammelt, bis ein beliebiger Verbraucher den
+Strom benötigt\footnote{Streng genommen wird natürlich Strom nicht
+verbraucht, ich bleibe allerdings bei dieser umgangssprachlichen
+Formulierung.}. Konventionelle Kohlekraftwerke tragen genauso wie
+Atomkraftwerke und Photovoltaiksysteme zur Stromerzeugung bei. So
+anschaulich dieses Modell ist, so vereinfacht es leider zu stark:
+
+\begin{enumerate}
+  \item Stromnetz kein speicher, \begin{equation}
+      \textrm{Erzeugung}(t) = \textrm{Verbrauch}(t) \forall t
+    \end{equation}
+  \item Erzeugung ist geographisch verteilt, sprich:
+    Höchstspannungsnetze etc. dazwischen. Es ist nicht möglich, die
+    Leistung an beliebiger Stelle einzuspeisen.
+    Ebenen des Stromnetzes erläutern, Niederspannungsnetz unten
+    verwendet.
+  \item Die Organisation des Strommarktes: Netzbetrieb vs. Vertrieb,
+    getrennte Unternehmen.
+\end{enumerate}
+
+Die generative Stromerzeugung aus Wind, Photovoltaik und Biomasse hat
+einen steigenden Anteil. Im Jahr 2009 betrug der Anteil 14,9\%, Tendenz
+weiter steigend.\todo{Quelle} Grundsätzlich macht dieser Trend aus ökologischer
+Sicht Sinn. Gleichzeitig verändert er jedoch die Annahmen, unter
+denen unser Stromnetz gebaut wurde: Erzeugung zentralisieren und den
+Strom zum Verbraucher transportieren. Vor allem 
+Photovoltaikinstallationen sind geographisch stark verteilt, was zu
+einer Einspeisung von Strom in die Niederspannungsebene führt. Diese
+wurde nicht dafür ausgelegt, den Strom entgegenzunehmen und überregional
+zu verteilen. Im Gegenteil, historisch wurde es als effizienter
+betrachtet, die Stromerzeugung zu zentralisieren und auf kleinere,
+geographisch verteilte Kraftwerke z.B. zur Versorgung von einzelnen
+Industriebetrieben zu verzichten.\todo{Referenc Carr, Cloud Computing}
+
+Ein weiteres Problem ist die unregelmässige Erzeugung: Während man ein
+Gaskraftwerk nach Bedarf hoch- oder herunterregeln kann, ist dies bei
+den generativen Stromerzeugern nicht der Fall. Wenn der Wind weht,
+erzeugen die in Betrieb befindlichen Anlagen \todo{Genaue Zahl + Quelle}
+GWh. \todo{Gesamtbedarf BRD gegenüberstellen}. Die Konsequenz: Um den
+Strom in Deutschland aufnehmen zu können, müssten andere Anlagen wie
+Kernkraftwerke abgeschaltet werden. Dies ist jedoch im Verlauf eines
+Tages nicht realisierbar. Im Gegenteil, im Moment werden
+Windkraftanlagen angehalten, weil andere Kraftwerke nicht schnell genug
+heruntergeregelt werden können\footnote{Dies ist auch der Grund, warum die
+Kernenergie keinesfalls als Brückentechnologie die Erneuerbaren
+unterstützt.}. 
+
+Zusammenfassend lässt sich festhalten: Erneuerbare Energien --- so
+wünschenswert ihr Einsatz ist --- führen zu Problemen im Stromnetz. Die
+etablierten Player am Markt haben darüber hinaus auch kein Interesse an
+einer verteilten Einspeisung von Strom, da diese ihre marktbeherrschende
+Position schwächen würde. Wohin also mit dem "`grünen"' Strom?
+
+\section{Flexibel durch Demand-Side Management}\label{sec:demand-side_management}
+
+Unser Stromnetz muss flexibler werden, um diese Stromeinspeisung
+aufnehmen zu können. Auf der Seite des Netzbetriebs und des Ausbaus der
+Stromnetze können wir als Open-Source Community nur einen indirekten
+Beitrag liefern, insofern gehe ich hier nicht näher darauf ein. Auch für
+die Speicherung von Strom in Pumpspeicherkraftwerken und --- neuerdings
+--- Batterien sind erhebliche Investitionen nötig, sodass sich auch hier
+keine Spielwiese findet.
+
+Eine andere Herangehensweise ist jedoch das \emph{Demand-Side
+Management}. Statt auf der Seite der Stromerzeugung und -verteilung
+Änderungen vorzunehmen, wird der Verbrauch von Strom beeinflusst. Damit
+ist jedoch zunächst nicht die Reduzierung des Stromverbrauchs gemeint,
+obwohl dies natürlich eine sinnvolle Anstrengung ist. Stattdessen wird
+der Stromverbrauch auf der Zeitachse verschoben. Das Ziel ist es,
+Stromverbraucher dann zu betreiben, wenn sowieso viel Strom erzeugt
+wird. Umgekehrt laufen diese Verbraucher nicht, wenn zu einem anderen
+Zeitpunkt weniger Strom erzeugt wird.
+\todo{Bilder Strom Shaping, vgl. E-Energy Studie}
+\todo{Impact, Siehe BEE-Studie}
+
+Im Industriebereich ist diese Herangehensweise schon lange Standard ---
+unter dem Stichwort "`Lastabwurf"' hat ein Netzbetreiber die
+Möglichkeit, den Stromverbrauch von einzelnen Industriebetrieben gezielt
+zu reduzieren, um Engpässe zu vermeiden. Im Gegenzug erhält der
+Industriebetrieb bessere Strompreise. Ein Netzbetreiber ist so in der
+Lage, relativ schnell erhebliche Lasten im Netz der momentanen Erzeugung
+anzupassen.
+
+Im Privathaushalt ist diese Technik jedoch noch nicht im Einsatz. Die
+Gründe hierfür sind vielfältig: Einerseits ist die notwendige Technik
+noch nicht weit verbreitet (Stichwort: Hausbussysteme), andererseits hat
+es sich bisher auch finanziell nicht gelohnt. Allerdings ist absehbar,
+dass nun die Zeit reif für Demand Side Management in Haushalten ist. Das
+zeigt sich auch daran, dass im Rahmen der E-Energy Initiative der
+Bundesregierung viele Projekte an dieser Idee arbeiten\todo{Referenz
+einfpgen}. Leider sind viele diese Projekte jedoch von den großen
+Stromkonzernen dominiert, sodass bezweifelt werden darf, dass die
+Projekte zu kundenorientierten Lösungen führen werden. 
+
+Dies wird zum Beispiel an der Datenschutzproblematik im Umgang mit Smart
+Metern deutlich. Ein Smart Meter ist ein Stromzähler, der die Messwerte
+in kurzen Zeitintervallen (typisch sind 15 Minuten) an den Netzbetreiber
+überträgt und auch dem Stromkunden zugänglich macht. Einerseits sind
+diese Daten natürlich für den Stromkunden interessant, da er den
+Einfluss seines Verhaltens auf den Stromverbrauch vor Augen geführt
+bekommt und so insgesamt weniger verbrauchen wird.
+
+Andererseits sind die Stromverbrauchsdaten aus Netzbetreibersicht auch
+sehr interessant, da sich hier völlig neue Möglichkeiten für
+Preismodelle und auch für das Marketing ergeben. Dazu muss man wissen,
+dass Privathaushalte im Moment durch Standardlastprofile abgerechnet
+werden, d.h. ein Netzbetreiber wird nicht für die real gelieferte
+Strommenge bezahlt, sondern auf der Basis eines durchschnittlichen
+Lastprofils und der Anzahl der versorgten Haushalte wird eine Pauschale
+abgerechnet. Mit Smart Metern kann nun der reale Verbrauch bestimmt
+werden und wird in Zukunft wohl zur Grundlage der Abrechnung werden
+\footnote{Entsprechende Änderungen werden derzeit von der
+Bundesnetzagentur diskutiert.}. 
+
+Um diese Abrechnung vorzunehmen gehen die Netzbetreiber davon aus, dass
+die Stromverbrauchsdaten in hoher zeitlicher Auflösung an sie
+übertragen werden, um dann eine verbrauchsgenaue Abrechnung gegenüber
+den Stromanbietern machen zu können\todo{Struktur Strommarkt erläutern}.
+Diese Daten sind jedoch als sehr sensibel einzustufen, da hieraus auf
+Lebens- und Konsumgewohnheiten geschlossen werden kann.
+\todo{Bild Tagesrhythmus, Artikel KJM, FAZ-Artikel}
+
+Die Netzbetreiber versuchen sich im Moment dadurch abzusichern, dass die
+Stromkunden ihnen eine Einwilligung geben. Dies ist jedoch juristisch
+eine sehr optimistische Herangehensweise \todo{Artikel DuD, Rechtliche
+Bewertung} und darüber hinaus eine grundlegend abzulehnende Forderung.
+Jeder Zähler verfügt über mehrere Register, in denen der Stromverbrauch
+zu unterschiedlichen Tarifzeiten abgelegt werden kann --- eine zeitnahe
+Übertragung in hoher Auflösung ist schlicht nicht erforderlich.
+
+\section{Chancen für Open-Source}\label{sec:chancen_open-source}
+In kundenfreundlichen Lösungen liegt die Chance für Open-Source
+Technologien. Indem die Technologien direkt von den Anwendern entwickelt
+werden, sind die Chancen groß, dass der Nutzen für Privathaushalte im
+Vordergrund steht.  Ich denke auch, dass es in Zusammenarbeit mit
+kleinen Stadtwerken in öffentlicher Hand möglich ist, eine
+Strommanagement-Infrastruktur kostendeckend einzuführen.
+
+Im Projekt \emph{mySmartGrid} wird zur Zeit in Kaiserslautern eine
+entsprechende Infrastruktur aufgebaut. Das Projekt wird vom Land
+Rheinland-Pfalz im Rahmen des Konjunkturprogramm II gefördert. Alle
+Technologien werden in enger Zusammenarbeit sowohl mit den
+Stromverbrauchern als auch mit den Netzbetreibern aus der Region
+(Technische Werke Kaiserslautern, Pfalzwerke) entwickelt.  Wir bauen auf
+ein Ökosystem von freien Lösungen.  Bei der Hardware setzen wir auf
+Consumer-Geräte, die einen hohen Verbreitungsgrad haben.  Ein möglichst
+großer Anteil der Funktionen soll in Software implementiert werden, da
+diese quasi ohne weitere Kosten vervielfältigt werden kann.
+Selbstverständlich werden alle Projektresultate (Soft- und Hardware)
+unter einer Open-Source Lizenz veröffentlicht. 
+
+Gleichzeitig werden ca.  1000 Haushalte in Kaiserslautern und Umgebung
+mit der Technik ausgerüstet. Da die Installation von Geräten durch
+Handwerker aus der Region erfolgt, ist eine möglichst gute
+Installationsunterstützung durch Softwarewerkzeuge notwendig.
+
+Das Projekt ist in drei Phasen gegliedert, die ich im Folgenden
+darstelle.
+
+\subsection{Messen und Verstehen}\label{sub:messenverstehen}
+
+In der ersten Projektphase geht es darum, den Teilnehmern ein
+Verständnis für den individuellen Stromverbrauch zu geben. Hierzu
+benutzen wir den "`Flukso"', um den den Stromverbrauch eines Haushalts
+zentral zu messen.\todo{Bild Flukso einfügen, Link}. Technisch ist der
+Flukso ein WLAN-Router, basiert auf OpenWRT und benutzt einen kleinen
+Mikrocontroller zur Messwerterfassung. Die Installation erfordert keine
+Neuverkabelung, da die Messung indirekt über Halleffektsensoren erfolgt.
+Die Messwerte werden zur mySmartGrid-Webseite übertragen, wo sie
+visualisiert werden können. Ausserdem können die Messwerte auch lokal
+abgefragt werden.
+
+Die Daten werden auf der mySmartGrid-Webseite nicht dauerhaft
+gespeichert, sondern nach und nach vergessen. Für die erste Stunde sind
+Minutenwerte gespeichert, für die letzten 24 Stunden nur noch
+fünfminütige Werte. Danach sinkt die Auflösung rapide. Wer die Daten
+dennoch in hoher Auflösung haben möchte, muss die API der Webseite
+benutzen. Weil viele Teilnehmer dies tun möchten, haben wir auch einen
+"`Rekorder-Dienst"' implementiert, welcher die Daten in höchster
+Auflösung mitschreiben kann. 
+
+Es sind auch Open-Source Alternativen zum Flukso vorhanden, zum Beispiel
+der Volkszähler \todo{link}. Obwohl wir ihn in diesem Projekt nicht einsetzen, sind
+im Moment Diskussionen im Gange, die Schnittstellen des Fluksos und des
+Volkszählers kompatibel zu machen. Aber auch die kommerziellen und von
+den Netzbetreibern eingesetzten Smart Meter müssen eine lokal
+auslesbare, optische Schnittstelle bieten \todo{Quelle: Positionspapier
+Bundesnetzagentur}.  Die Umsetzung dieser Schnittstelle bleibt jedoch
+zunächst dem Hersteller überlassen. Viele Hersteller setzen auf den
+elektronischen Einheitszähler, der vom VDE \todo{Referenz
+Netzkompetenzzentrum} standardisiert wird. Über die optische serielle
+Schnittstelle wird jede Sekunde ein Datagramm mit allen relevanten
+Informationen ausgesandt. Ein Mikrocontroller mit zugehöriger Fotodiode
+ist prinzipiell alles, was zum Auslesen benötigt wird --- eine
+Open-Source Lösung hierfür fehlt jedoch derzeit.
+
+Das Messen ist allerdings zumeist nicht genug, um eine nachhaltige
+Änderung des Stromverbrauchsverhaltens anzuregen. Dazu setzen wir auf
+zwei Ansätze:
+
+\begin{enumerate}
+  \item Einerseits helfen automatisierte Analysen, den eigenen
+    Stromverbrauch zu beurteilen. Dazu sind zunächst recht fein
+    aufgelöste Stromverbrauchswerte nötig, um einzelne Verbraucher
+    erkennen zu können. Daher muss dieses Verfahren optional bleiben und
+    nur bei Bedarf vorgenommen werden. Wir schneiden dann für zwei
+    Wochen die Stromverbrauchswerte mit und identifizieren einzelne
+    Verbraucher. Basierend auf dieser Analyse ist es dann recht einfach,
+    konkrete Handlungsempfehlungen zu geben, z.B. "`Tauschen Sie Ihren
+    Kühlschrank aus --- das amortisiert sich nach $2,4$ Jahren."' 
+    Diese Analysen sind im Moment noch im Forschungsstadium.
+  \item Andererseits ist es für Stromkunden hilfreich, den Effekt ihrer
+    Handlungen unmittelbar zu sehen. Wenn ich den Wasserkocher
+    einschalte, dann verbrauche ich auf einmal 2kW - das führt zu einem
+    gut sichtbaren Sprung in der Stromverbrauchskurve. Die logische
+    Konsequenz wäre es, nur die wirklich benötigte Menge Wasser in den
+    Wasserkocher zu füllen.
+\end{enumerate}
+
+Zur Anzeige der Verbrauchsinformationen haben wir uns für den
+"`Chumby"` entschieden\todo{Bild}. Der Chumby basiert technisch
+ebenfalls auf einem WLAN-Router, hat allerdings einen Touchscreen und
+einen Lautsprecher integriert. Es sind schon viele Applikationen für den
+Chumby verfügbar, sodass das Gerät neben Stromverbrauchsinformationen
+auch den Wetterbericht anzeigen und Internetradio abspielen kann. Unsere
+Nutzer können sich die Applikationen selbst zusammenstellen. Welche
+Darstellungsformen für die Strominformationen am Sinnvollsten sind,
+werden wir in der kommenden Zeit zusammen mit unseren Projektteilnehmern
+erarbeiten.
+
+\subsection{Regelung von Verbrauchern}\label{sub:steuern}
+
+Der nächste Schritt ist das Steuern von Verbrauchern im Haushalt.
+Mit Hilfe von meteorologischen Modellen ist es möglich, die
+Stromproduktion auf Tagesfrist recht genau vorherzusagen. Wenn also
+morgen Mittag der Wind weht, führt dies auch zu einer erhöhten
+Stromproduktion. Diese Information kann dann einen Tag im Voraus zu den
+Haushalten transportiert werden. Die Nutzer können dann diese
+Information angezeigt bekommen und ihr Verhalten entsprechend anpassen
+--- für eine Spülmaschine ist es meist recht egal, ob sie morgens oder
+mittags läuft.
+
+Natürlich ist dies aber nicht genug, denn eigentlich sollte diese
+Regelung automatisch passieren. Leider bieten die meisten
+Haushaltsgeräte keine Möglichkeit, Steuerbefehle à la "`heute mittag um
+14:00 Strom verbrauchen"' zu verarbeiten. \footnote{Meines Wissens nach
+gibt es nur eine Waschmaschine von Miele, die es überhaupt erlaubt, in
+ein Hausbussystem integriert zu werden.} Ebenso ungelöst ist die Frage
+nach einem universellen und nachrüstbaren Bussystem, welches diese
+Steuerinformationen zu den Verbrauchern transportiert. Bussysteme wie
+EIB und KNX sind nur dann sinnvoll einsetzbar, wenn gleichzeitig größere
+Umbauten an der Wohnung vorgenommen werden. Darüber hinaus sind diese
+Systeme auch recht teuer. Dies schließt alle Leute aus, die in einer
+Mietwohnung wohnen, denn beim Auszug ist es nicht ohne weiteres
+möglich, das Bussystem mitzunehmen.
+
+Mit "`digitalStrom"' wird derzeit ein anderes System entwickelt, welches
+mit relativ geringem Aufwand nachrüstbar ist und Steuerinformationen
+über das Stromnetz transportiert. Dieses System ist jedoch noch nicht am
+Markt verfügbar.
+
+Langfristig ist eine Lösung wünschenswert, die eine IP-basierte
+Kommunikationsinfrastruktur auf kleinen Mikrocontrollern umsetzt, damit
+die Lösung bezahlbar bleibt. Meine eigenen Experimente mit 6LoWPAN und
+funkbasierter Kommunikation auf der Basis von 868 MHz zeigen, dass eine
+solche Lösung sehr wohl kostengünstig umzusetzen ist\todo{Referenz
+Octobus, Bild}. Mit Conkiki \todo{Referenz} steht auch ein Open-Source
+Betriebssystem zur Verfügung. Alternativ ist auch mit Ethersex
+\todo{Referenz} eine etablierte Lösung vorhanden. 
+
+Um die Entwicklung voran zu treiben setzen wir im Projekt mySmartGrid
+auf die Steuerung von Wärmespeichern wie Kühlgeräte und Wärmepumpen. Wir
+greifen dabei nicht in die interne Regelung der Geräte
+ein\footnote{Es wäre für unsere Teilnehmer wohl nicht akzeptabel, wenn
+ich mit meinem Lötkolben an ihren Kühlschränken herumbastele ;-)}. Für
+Kühlschränke und Gefriertruhen bevorzugen wir folgenden Ansatz: Die
+Geräte werden über einen Zwischenstecker von der Stromversorgung
+getrennt. In der Folge steigt die Innentemperatur an. Wenn nun der
+Stromverbrauch zu einem Zeitpunkt $t$ maximiert werden soll, muss die
+Innentemperatur zu diesem Zeitpunkt also recht hoch sein. Dann wird das
+Kühlgerät wieder ans Netz angeschlossen. Die Regelung des Kühlgerätes
+wird nun aufgrund der (relativ) hohen Innentemperatur den Kompressor
+anschalten und wie gewünscht Strom verbrauchen. Diese Herangehensweise
+darf jedoch nicht dazu führen, dass Lebensmittel verderben oder
+Tiefkühlware auftaut.
+
+Eine einfache Lösung wäre, die Innenraumtemperatur des Kühlgerätes über
+einen Sensor zu überwachen. Dieser Sensor verursacht jedoch
+Zusatzkosten. Daher prognostizieren wir das Verhalten der internen
+Regelung des Gerätes und übersteuern diese gezielt. Das setzt eine
+Systemidentifikation und eine Einrichtungsprozedur voraus. Diese
+ermittelt dann Regelparameter, die dazu benutzt werden, das Kühlgerät
+gezielt vor dem geplanten Anschaltzeitpunkt auszuschalten. Gleichzeitig
+ist gewährleistet, dass die Kühlkette nicht unterbrochen wird. Aus den
+Strommessungen lässt sich lokal auch feststellen, ob der Kompressor
+eines Kühlgerätes anläuft. Durch kurzes Einschalten ist es auch ohne
+Temperatursensor möglich, Rückschlüsse auf die Innentemperatur des
+Kühlgerätes zu ziehen.
+
+
+Der wichtigste Faktor ist jedoch die Akzeptanz der Technologie bei den
+Anwendern: Diese müssen jederzeit in der Lage sein, die vorgeschlagenen
+Regeleingriffe abzulehnen. Da die Regelungsalgorithmen sowieso auf dem
+Chumby laufen werden, ist hier auch der logische Platz, um den Benutzer
+über die aktuelle Planung zu informieren. Dort wird es dann auch die
+Möglichkeit geben, die Regelung zu beeinflussen oder auch zu
+deaktivieren.
+
+Schliesslich ist eine weitere Gruppe von Stromkunden sehr interessant
+für den Einsatz von Haussteuerungen: Für Photovoltaikanlagenbesitzer ist ab
+diesem Sommer der Eigenverbrauch des selbst erzeugten Stroms die
+rentabelste Option\todo{Kleines Rechenbeispiel}. Dies macht auch
+ökonomisch Sinn, denn der selbstverbrauchte Strom muss nicht über das
+Stromnetz transportiert werden und entlastet es. Ein teurer Netzausbau
+kann so vielleicht nicht ganz vermieden, aber doch verzögert bzw.
+reduziert werden.
+
+Hier ist es wiederum möglich, die Stromproduktion für den folgenden Tag
+recht genau vorherzusagen. Neben der Anzeige auf dem Chumby können auch
+Geräte so gesteuert werden, dass sie den selbst produzierten Solarstrom
+direkt aufnehmen.
+
+\subsection{Virtueller Verbraucher}\label{sub:virtuellerverbraucher}
+Natürlich ist es für einen einzelnen Haushalt nicht möglich,
+signifikanten Einfluss auf das Stromnetz zu haben. Allerdings gibt es ja
+recht viele Haushalte, auf die man potentiell Einfluss nehmen könnte.
+Alle Teilnehmer rufen also einen Tag im Voraus die Prognose für den
+nächsten Tag ab und versuchen, diese umzusetzen. Die genaue Modellierung
+ist hier ein statistisches Problem, denn nicht jeder Haushalt wird sich
+an die Handlungsempfehlungen halten. Zusammengenommen dürfte es jedoch
+möglich sein, einen signifikanten Einfluss auf das lokale Stromnetz zu
+haben.
+
+Dieser Eingriff bietet Chancen für die lokalen Netzbetreiber. Diese
+können dieses Regelpotential in ihre kurzfristige Planung mit
+einbeziehen. Wenn normalerweise Lastspitzen durch den teuren,
+kurzfristigen Zukauf von Strom abgedeckt werden müssen, können sie durch
+die Verschiebung von Lasten Geld sparen. Diesen Profit können sie sich
+dann mit den teilnehmenden Haushalten teilen. Hier sind zwei Modelle denkbar: 
+\begin{enumerate}
+  \item Die Haushalte schliessen sich zu einer Genossenschaft zusammen
+    und verhandeln direkt mit dem lokalen Netzbetreiber. Die Vermarktung
+    des Regelpotentials ist nicht an einen Stromlieferanten gebunden,
+    d.h. die Eigner der Genossenschaft können ihren Strom bei
+    unterschiedlichen Lieferanten einkaufen. Die Einnahmen der
+    Genossenschaft können zur Finanzierung der Geräte verwendet werden.
+    Dieses Modell macht dort Sinn, wo kleinere Netzbetreiber wie
+    unabhängige Stadtwerke den Netzbetrieb organisieren.
+  \item Ein anderes Modell wäre die Finanzierung der Geräte etc. über
+    den Stromvertrieb, d.h. ein Stromkunde bekommt andere
+    Lieferkonditionen, wenn er mit der Regelung seiner Geräte
+    einverstanden ist. Hier hat der Stromkunde gegenüber dem
+    Genossenschaftsmodell eine schwächere Position. Zudem ist dieses
+    Modell aufgrund der Organisation des Strommarkts schwierig
+    umzusetzen.
+\end{enumerate}
+
+Für mySmartGrid favorisieren wir das Genossenschaftsmodell. Unser Plan
+ist es, die Geräte aus dem Projekt bei den Teilnehmern zu belassen und
+die Gründung einer Genossenschaft anzustoßen. Die Herausforderung
+bleibt: Wie kann Demand-Side Management kostendeckend eingesetzt werden?
+
+\section{Schlussfolgerungen}
+Smart Grids, "`intelligente Stromnetze"', sind eines der Themen, welche
+von der Politik und natürlich auch der Stromwirtschaft immer wieder in
+den Vordergrund gestellt werden. Leider kommt dabei der Stromkunde zu
+kurz --- die Bedürfnisse von Stromkunden werden weitgehend ignoriert und
+der Datenschutz wird oft ausser acht gelassen\todo{Referenz
+BMWi-Konferenz Nutzerschutz}.
+
+Aber auch kleinere Stadtwerke haben mit dieser Entwicklung Probleme:
+Aufgrund politischer Vorgaben müssen sie zum Beispiel Smart Meter
+einführen, obwohl ihnen dadurch Kosten entstehen, die sie nicht direkt
+auf den Kunden umlegen können. 
+
+Gleichzeitig ist die Einführung von "`intelligenten"' Technologien in
+das Stromnetz eine hervorragende Spielwiese für alle Hacker und Nerds.
+Hier gilt es, Gedanken umzusetzen, die sowieso in den Hackerspaces
+dieser Welt diskutiert werden\footnote{Warum definiert jeder Hackerspace
+ein eigenes Hausbussystem?}. Das Problem rein technologisch anzugehen
+wäre allerdings zuwenig. Sowohl ökonomische, ökologische als auch
+gesellschaftliche Überlegungen müssen mit einbezogen werden. Es wird
+auch immer mehr als eine Lösung geben. Insofern sind die idealen
+Voraussetzungen für ein Open-Source Ökosystem gegeben --- lasst uns diese
+Spielwiese nutzen!
+
+\cite{geller2010smartgrid}
+
+
+%\input{einleitung}
+%\input{demandside}
+%\input{umsetzung}
+%\input{risiken}
+%\input{anwendungen}
+%\input{community}
 \bibliographystyle{plain}
 \bibliography{main}
 \end{document}
