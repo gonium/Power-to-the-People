@@ -110,7 +110,7 @@ Augen führen:
 
 Die einzelnen Kraftwerke speisen die elektrische Energie in das Netz
 ein. Dort wird die Energie gesammelt, bis ein beliebiger Verbraucher den
-Strom benötigt\footnote{Streng genommen wird natürlich Strom nicht
+Strom benötigt\footnote{Streng genommen wird Strom natürlich nicht
 verbraucht, ich bleibe allerdings bei dieser umgangssprachlichen
 Formulierung.}. Konventionelle Kohlekraftwerke tragen genauso wie
 Atomkraftwerke und Photovoltaiksysteme zur Stromerzeugung bei. So
@@ -125,28 +125,41 @@ anschaulich dieses Modell ist, so vereinfacht es leider zu stark:
     Leistung an beliebiger Stelle einzuspeisen.
     Ebenen des Stromnetzes erläutern, Niederspannungsnetz unten
     verwendet.
+
+    Quelle: http://www.bmwi.de/BMWi/Navigation/Energie/Energietraeger/strom,did=292512.html
+    Stromkreislängen in Deutschland
+ 	NS*	MS*	HS*	HöS*	gesamt
+Stromkreislänge gesamt
+in Deutschland [in km]	1.067.100	493.000	75.200	36.000	1.671.300
+Quelle: VDN
+*NS: Niederspannung (0,4 Kilovolt)
+*MS: Mittelspannung (6 bis 60 Kilovolt)
+*HS: Hochspannung (> 60 bis < 220 Kilovolt)
+*HöS: Höchstspannung (220 und 380 Kilovolt)
+    
   \item Die Organisation des Strommarktes: Netzbetrieb vs. Vertrieb,
     getrennte Unternehmen.
 \end{enumerate}
 
 Die generative Stromerzeugung aus Wind, Photovoltaik und Biomasse hat
-einen steigenden Anteil. Im Jahr 2009 betrug der Anteil 14,9\%, Tendenz
-weiter steigend.\todo{Quelle} Grundsätzlich macht dieser Trend aus ökologischer
-Sicht Sinn. Gleichzeitig verändert er jedoch die Annahmen, unter
-denen unser Stromnetz gebaut wurde: Erzeugung zentralisieren und den
-Strom zum Verbraucher transportieren. Vor allem 
+einen steigenden Anteil. Im Jahr 2009 betrug der Anteil 15,6\%, Tendenz
+weiter steigend~\cite{web:bmwi-energiedaten}. Grundsätzlich macht dieser
+Trend aus ökologischer Sicht Sinn. Gleichzeitig verändert er jedoch die
+Annahmen, unter denen unser Stromnetz gebaut wurde: Erzeugung
+zentralisieren und den Strom zum Verbraucher transportieren. Vor allem
 Photovoltaikinstallationen sind geographisch stark verteilt, was zu
 einer Einspeisung von Strom in die Niederspannungsebene führt. Diese
 wurde nicht dafür ausgelegt, den Strom entgegenzunehmen und überregional
 zu verteilen. Im Gegenteil, historisch wurde es als effizienter
 betrachtet, die Stromerzeugung zu zentralisieren und auf kleinere,
 geographisch verteilte Kraftwerke z.B. zur Versorgung von einzelnen
-Industriebetrieben zu verzichten.\todo{Referenc Carr, Cloud Computing}
+Industriebetrieben zu verzichten~\cite{carr08switch}.
 
 Ein weiteres Problem ist die unregelmässige Erzeugung: Während man ein
 Gaskraftwerk nach Bedarf hoch- oder herunterregeln kann, ist dies bei
 den generativen Stromerzeugern nicht der Fall. Wenn der Wind weht,
-erzeugen die in Betrieb befindlichen Anlagen \todo{Genaue Zahl + Quelle}
+erzeugen die in Betrieb befindlichen Anlagen \todo{Genaue Zahl + Quelle
+Siehe Dena-Netzstudie I (dena.de)}
 GWh. \todo{Gesamtbedarf BRD gegenüberstellen}. Die Konsequenz: Um den
 Strom in Deutschland aufnehmen zu können, müssten andere Anlagen wie
 Kernkraftwerke abgeschaltet werden. Dies ist jedoch im Verlauf eines
@@ -420,7 +433,24 @@ deaktivieren.
 Schliesslich ist eine weitere Gruppe von Stromkunden sehr interessant
 für den Einsatz von Haussteuerungen: Für Photovoltaikanlagenbesitzer ist ab
 diesem Sommer der Eigenverbrauch des selbst erzeugten Stroms die
-rentabelste Option\todo{Kleines Rechenbeispiel}. Dies macht auch
+rentabelste Option\todo{Kleines Rechenbeispiel}.
+
+Die Hersteller von Wechselrichtern für Solaranlagen sind dabei,
+entsprechende Managementfunktionen in ihre Geräte zu integriern. Dabei
+rechnen sie damit, dass zwischen 30 und 50 \% des eigenen Solarstroms
+selbst verbraucht werden können\cite{ossenbrinck10herstellung}.
+
+TODO: Lösung von Conergy kostet 850-900 Euro. Rentabilität? Nur für
+diesen einen Zweck einsetzbar?
+
+Ausserdem: Connergy will 2011 auch Energiespeicher für Zuhause anbieten
+(Li-Ion, 8kWh). Lebensdauer > 20 Jahre.
+
+IBC Solar: 700 Euro, Amortisation nach 5-7 Jahre bei einer 5kWp-Anlage.
+
+Als Geräte favorisieren sie Tiefkühlanlagen.
+
+Dies macht auch
 ökonomisch Sinn, denn der selbstverbrauchte Strom muss nicht über das
 Stromnetz transportiert werden und entlastet es. Ein teurer Netzausbau
 kann so vielleicht nicht ganz vermieden, aber doch verzögert bzw.
