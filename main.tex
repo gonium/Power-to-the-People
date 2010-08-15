@@ -190,29 +190,96 @@ leider zu stark:
     mit eigener Stromerzeugung, Windkraftanlagen, Photovoltaiksysteme
     und auch Blockheizkraftwerke. 
 
-  \item Die Erzeugung und der Verbrauch von Strom ist geographisch
-    verteilt. Ein Ko
-    
-    Erzeugung ist geographisch verteilt, sprich:
-    Höchstspannungsnetze etc. dazwischen. Es ist nicht möglich, die
-    Leistung an beliebiger Stelle einzuspeisen.
-    Ebenen des Stromnetzes erläutern, Niederspannungsnetz unten
-    verwendet.
+    Für die Regelung hat das "`European Network of Transmission System
+    Operators for Electricity"' (ENTSO-E) Standards geschaffen. Im
+    "`UCTE Operation Handbook"' sind die Verfahren der Netzregelung im
+    Abschnitt "`Load Frequency Control and Performance"'
+    beschrieben~\cite{entsoe10ucte}. Als Regelgröße dient die
+    Netzfrequenz: Dieser Wert muss bei 50 Hz liegen. Wenn ein
+    elektrischer Verbraucher eingeschaltet wird, dann sinkt die
+    Netzfrequenz. Wird umgekehrt ein Verbraucher ausgeschaltet, so
+    steigt die Netzfrequenz. Genau umgekehrt wird die Netzfrequenz von
+    der Leistung der Kraftwerke beeinflusst: Wird zusätzliche Leistung
+    eingespeisst, so steigt die Netzfrequenz.
 
-    Quelle: http://www.bmwi.de/BMWi/Navigation/Energie/Energietraeger/strom,did=292512.html
-    Stromkreislängen in Deutschland
- 	NS*	MS*	HS*	HöS*	gesamt
-Stromkreislänge gesamt
-in Deutschland [in km]	1.067.100	493.000	75.200	36.000	1.671.300
-Quelle: VDN
-*NS: Niederspannung (0,4 Kilovolt)
-*MS: Mittelspannung (6 bis 60 Kilovolt)
-*HS: Hochspannung (> 60 bis < 220 Kilovolt)
-*HöS: Höchstspannung (220 und 380 Kilovolt)
-    
-  \item Die Organisation des Strommarktes: Netzbetrieb vs. Vertrieb,
-    getrennte Unternehmen.
+    Drei verschiedene Stufen sind an der Regelung beteiligt:
+    \begin{enumerate}
+      \item Für die \emph{Primärregelung} müssen Netzbetreiber innerhalb
+        von 30 Sekunden zwei Prozent seiner aktuellen Erzeugung als
+        Reserve bereitstellen bzw. die Erzeugung reduzieren können. Die
+        Kraftwerke müssen bis zu 15 Minuten diese Leistungserhöhung
+        liefern können. Die Primärregelung hat die Aufgabe, die
+        Netzfrequenz im Höchstspannungsnetz auf europäischer Ebene
+        stabil zu halten.
+      \item Die \emph{Sekundärregelung} kann zeitgleich zur
+        Primärregelung anlaufen und hat die Aufgabe, die
+        Frequenzstabilität im einer Regelzone sicherzustellen. Dazu
+        werden zusätzliche Spitzenlastkraftwerke benutzt. Die
+        Sekundärregelung soll nach 15 Minuten abgeschlossen sein.
+      \item Auch bei der \emph{Tertiärregelung} oder auch
+        \emph{Minutenreserve} ist das Ziel, die Netzfrequenz zu
+        stabilisieren. Hierbei werden zusätzliche Reserven vom
+        Übertragungsnetzbetreiber bei den Lieferanten angefordert. Dies
+        geschieht üblicherweise telefonisch. Die veränderte
+        Lastsituation wird dann permanent durch die Kraftwerke
+        abgedeckt, die Regelung ist abgeschlossen.
+    \end{enumerate}
+
+  \item Der Stromsee vernachlässigt auch, dass die Erzeugung und der
+    Verbrauch von Strom geographisch verteilt sind. Eine Kilowattstunde
+    aus einem Grundlastkraftwerk wird normalerweise in das
+    Höchstspannungsnetz (220 und 380 Kilovolt) eingespeist, vgl. Tabelle
+    \ref{tab:stromkreise}. Die Aufgabe des Höchstspannungsnetzes ist die
+    Verteilung des Stroms über größere Distanzen, auch in das
+    europäische Ausland. Nahe den Verbrauchszentren wird der Strom in
+    das Hochspannungsnetz transformiert, von dort aus auch in das
+    Mittelspannungsnetz. Mittelgroße Kraftwerke speisen in das
+    Hochspannungsnetz ein, während Stadtwerke und große Windkraft- bzw.
+    Photovoltaikanlagen auch direkt in das Mittelspannungsnetz
+    einspeisen können. 
+
+    \begin{table}
+    \centering
+    \begin{tabular}{|l|r|r|}
+      \hline
+      & Installierte Länge (km) & Spannung (kV) \\
+      \hline
+      Höchstspannung & 36.000 & 220 und 380 \\
+      Hochspannung & 75.200 & 60-220 \\
+      Mittelspannung & 493.000 & 6-60 \\
+      Niederspannung & 1.067.100 & 0,4\\
+      \hline
+    \end{tabular}
+    \caption{Stromkreise in Deutschland. Quelle: BMWi~\cite{bmwi10stromnetze}}
+    \label{tab:stromkreise}
+  \end{table}
+ 
+    Über Umspannwerke in den Gemeinden wird das Mittelspannungsnetz an
+    das Niederspannungsnetz angeschlossen. Hier wird der Strom
+    schließlich durch private Haushalte und Gewerbebetriebe verbraucht.
+    Eine Ausnahme stellen Industrieabnehmer dar: Diese können ihren
+    Strom auch aus dem Mittelspannungsnetz beziehen.
+
+    Die Einspeisung von Solaranlagen auf den Dächern der Privathaushalte
+    kann zu Problemen bei der Netzregulierung führen: Da auf der
+    Nierderspannungsebene keine Regelenergie zur Verfügung steht, können
+    signifikante Photovoltaikeinspeisungen die Netzfrequenz nach oben
+    treiben. Daher kommt es schon heute --- vor allem in ländlichen
+    Regionen --- vor, dass die Netzbetreiber den Anschluss von
+    Photovoltaikanlagen verweigern. Darüber hinaus kann eine Einspeisung
+    von dezentral erzeugtem Solarstrom auch die Leitungen als solche
+    überlasten.
+   
+  \item Der Stromsee stellt schließlich auch die Organisationsstruktur
+    des Stromnetzes nicht dar. 
+
+%    http://de.wikipedia.org/wiki/Stromnetz#Netzbetreiber
+%http://de.wikipedia.org/w/index.php?title=Datei:Regelzonen_deutscher_%C3%9Cbertragungsnetzbetreiber_neu.png&filetimestamp=20100621164106
+
 \end{enumerate}
+
+\todo{Überleitung: Stromnetz ist ewig gewachsen, nun neue energien.
+Umbau erforderlich.}
 
 Die generative Stromerzeugung aus Wind, Photovoltaik und Biomasse hat
 einen steigenden Anteil. Im Jahr 2009 betrug der Anteil 15,6\%, Tendenz
@@ -227,6 +294,10 @@ zu verteilen. Im Gegenteil, historisch wurde es als effizienter
 betrachtet, die Stromerzeugung zu zentralisieren und auf kleinere,
 geographisch verteilte Kraftwerke z.B. zur Versorgung von einzelnen
 Industriebetrieben zu verzichten~\cite{carr08switch}.
+
+%http://www.bundestag.de/presse/hib/2010_08/2010_264/01.html
+%http://www.heise.de/tp/blogs/2/148188
+
 
 TODO: Überarbeiten. Wind- und Photovoltaikeinspeisungen sind auf
 tagessicht sehr wohl planbar und tragen zur Grundlast bei. Dies wird
@@ -248,6 +319,12 @@ Kernenergie keinesfalls als Brückentechnologie die Erneuerbaren
 unterstützt.}. 
 
 Durch den zunehmenden Anteil regenerativer Energien im deutschen Strommix lassen sich Grundlastkraftwerke immer schlechter auslasten.
+DENA-Netzstudie II
+
+http://www.bmwi.de/BMWi/Navigation/Energie/Energietraeger/netze,did=354322.html
+
+Stromlücke: BEE-Studie
+
 
 Zusammenfassend lässt sich festhalten: Erneuerbare Energien --- so
 wünschenswert ihr Einsatz ist --- führen zu Problemen im Stromnetz. Die
@@ -468,7 +545,7 @@ Kommunikationsinfrastruktur auf kleinen Mikrocontrollern umsetzt, damit
 die Lösung bezahlbar bleibt. Meine eigenen Experimente mit 6LoWPAN und
 funkbasierter Kommunikation auf der Basis von 868 MHz zeigen, dass eine
 solche Lösung sehr wohl kostengünstig umzusetzen ist\todo{Referenz
-Octobus, Bild}. Mit Conkiki \todo{Referenz} steht auch ein Open-Source
+Octobus, Bild}. Mit Contiki \todo{Referenz} steht auch ein Open-Source
 Betriebssystem zur Verfügung. Alternativ ist auch mit Ethersex
 \todo{Referenz} eine etablierte Lösung vorhanden. 
 
