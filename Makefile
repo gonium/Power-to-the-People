@@ -2,9 +2,7 @@ pdflatex=pdflatex
 bibtex=bibtex
 
 SRC=main.tex 
-SRC_ADDITIONAL=frontpage.tex einleitung.tex demandside.tex \
-			   umsetzung.tex risiken.tex anwendungen.tex \
-			   community.tex
+SRC_ADDITIONAL=
 BIB=main.bib
 AUX=$(SRC:.tex=.aux)
 PDF=$(SRC:.tex=.pdf)
