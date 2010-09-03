@@ -358,15 +358,39 @@ angepasst werden?
 
 \section{Flexibel durch Demand-Side Management}\label{sec:demand-side_management}
 
-Unser Stromnetz muss flexibler werden, um einen höheren Anteil von
-EE-Strom aufnehmen zu können. Auf der Seite des Netzbetriebs und des
-Ausbaus der Stromnetze können wir als Open-Source Community nur einen
-indirekten Beitrag liefern, insofern gehe ich hier nicht näher darauf
-ein. Auch für die Speicherung von Strom in Pumpspeicherkraftwerken und
---- neuerdings --- Batterien sind erhebliche Investitionen nötig, sodass
-sich auch hier keine Spielwiese findet.
+Klar ist, dass unser Stromnetz flexibler werden muss. Prinzipiell gibt
+es zwei Möglichkeiten, dies zu schaffen: Einerseits können
+Speichermöglichkeiten für Strom im Netz geschaffen werden. In
+Pumpspeicherkraftwerken kann Strom zwischengespeichert werden, in dem
+Wasser von einem niedrigen Reservoir in ein höhergelegenes gepumpt wird.
+Wird der Strom wieder benötigt, so wird die in der Höhe gespeicherte
+Energie über ein Wasserkraftwerk wieder in Strom verwandelt.
+Üblicherweise werden Pumpspeicherkraftwerke so dimensioniert, dass sie
+über 4-8 Stunden ihre Leistung abgeben können. Dabei steht die Leistung
+innerhalb von Minuten zur Verfügung und kann in weiten Bereichen
+geregelt werden. Der Wirkungsgrad liegt
+bei ca. 80\%~\cite{wikipedia10pumpspeicher}.
 
-Eine andere Herangehensweise ist jedoch das \emph{Demand-Side
+Eine zweite Möglichkeit zur Stromspeicherung liegt in modernen
+Batteriespeichern. Es gibt derzeit erste Projekte, die den
+großtechnischen Einsatz von Lithion-Ionen-Batterien
+erproben~\cite{braun09lithium}. Dabei werden dezentral Batteriespeicher
+installiert, die im Falle eines Überschusses Strom aufnehmen und später
+wieder abgeben können. In die gleiche Kategorie fallen auch
+Elektrofahrzeuge, die ihre Batteriekapazität nach aussen hin zugänglich
+machen. Technisch sind stationäre Systeme jedoch einfacher zu betreiben:
+Die Lade- und Entladeregelung muss nicht die hohen Leistungen zur
+Verfügung stellen, die in einem Elektroauto notwendig sind. Darüber
+hinaus werden stationäre Systeme auch nur bis zu 30\% ihrer Kapazität
+entladen. Mit aktuell verfügbaren Technologien können so
+Batterielebenszeiten von 25 Jahren erreicht werden. Dezentrale
+Batteriespeicher haben auch den Vorteil, dass sie direkt am
+Niederspannungsnetz hängen uns so z.B. die Einspeisungen von privaten
+Photovoltaiksystemen aufnehmen können. Der so zwischengespeicherte Strom
+belastet die Übertragungsnetze nicht, sondern verbleibt lokal in einem
+Versorgungsnetz, bis der Strom dort benötigt wird.
+
+Die zweite Möglichkeit, das Stromnetz flexibler zu machen, liegt im \emph{Demand-Side
 Management}. Statt auf der Seite der Stromerzeugung und -verteilung
 Änderungen vorzunehmen, wird der Verbrauch von Strom beeinflusst. Damit
 ist jedoch zunächst nicht die Reduzierung des Stromverbrauchs gemeint,
@@ -375,15 +399,31 @@ der Stromverbrauch auf der Zeitachse verschoben. Das Ziel ist es,
 Stromverbraucher dann zu betreiben, wenn sowieso viel Strom erzeugt
 wird. Umgekehrt laufen diese Verbraucher nicht, wenn zu einem anderen
 Zeitpunkt weniger Strom erzeugt wird.
+
+
 \todo{Bilder Strom Shaping, vgl. E-Energy Studie}
 \todo{Impact, Siehe BEE-Studie}
 
 
-Dazu teilt der Netzbetreiber dem Großverbraucher auf kurze Sicht (15
-Minuten) mit, dass einige Aggregate abzuschalten sind. Daraufhin werden
-Spitzen im Strombedarf gekappt.
+Im Industriebereich ist diese Herangehensweise schon lange Standard ---
+unter dem Stichwort "`Lastabwurf"' hat ein Netzbetreiber die
+Möglichkeit, den Stromverbrauch von einzelnen Industriebetrieben gezielt
+zu reduzieren, um Engpässe zu vermeiden. Im Gegenzug erhält der
+Industriebetrieb bessere Strompreise. Ein Netzbetreiber ist so in der
+Lage, relativ schnell erhebliche Lasten im Netz der momentanen Erzeugung
+anzupassen.
 
-TODO: Verschiedene Szenarien, siehe eEnergy-Studie
+Im Privathaushalt ist diese Technik jedoch noch nicht im Einsatz. Die
+Gründe hierfür sind vielfältig: Einerseits ist die notwendige Technik
+noch nicht weit verbreitet (Stichwort: Hausbussysteme), andererseits hat
+es sich bisher auch finanziell nicht gelohnt. Allerdings ist absehbar,
+dass nun die Zeit reif für Demand Side Management in Haushalten ist. Das
+zeigt sich auch daran, dass im Rahmen der E-Energy Initiative der
+Bundesregierung viele Projekte an dieser Idee arbeiten\todo{Referenz
+einfpgen}. Leider sind viele diese Projekte jedoch von den großen
+Stromkonzernen dominiert, sodass bezweifelt werden darf, dass die
+Projekte zu kundenorientierten Lösungen führen werden. 
+
 
 Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
 Als großes verteiltes System muss die Umsetzung zu einem stabilen
@@ -413,24 +453,6 @@ Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
 pro Gruppe abrufen zu können. 
 
 
-Im Industriebereich ist diese Herangehensweise schon lange Standard ---
-unter dem Stichwort "`Lastabwurf"' hat ein Netzbetreiber die
-Möglichkeit, den Stromverbrauch von einzelnen Industriebetrieben gezielt
-zu reduzieren, um Engpässe zu vermeiden. Im Gegenzug erhält der
-Industriebetrieb bessere Strompreise. Ein Netzbetreiber ist so in der
-Lage, relativ schnell erhebliche Lasten im Netz der momentanen Erzeugung
-anzupassen.
-
-Im Privathaushalt ist diese Technik jedoch noch nicht im Einsatz. Die
-Gründe hierfür sind vielfältig: Einerseits ist die notwendige Technik
-noch nicht weit verbreitet (Stichwort: Hausbussysteme), andererseits hat
-es sich bisher auch finanziell nicht gelohnt. Allerdings ist absehbar,
-dass nun die Zeit reif für Demand Side Management in Haushalten ist. Das
-zeigt sich auch daran, dass im Rahmen der E-Energy Initiative der
-Bundesregierung viele Projekte an dieser Idee arbeiten\todo{Referenz
-einfpgen}. Leider sind viele diese Projekte jedoch von den großen
-Stromkonzernen dominiert, sodass bezweifelt werden darf, dass die
-Projekte zu kundenorientierten Lösungen führen werden. 
 
 
 \subsection{Datenschutz}\label{sub:datenschutz}
