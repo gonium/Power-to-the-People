@@ -429,15 +429,54 @@ Allen Eingriffen gemein ist, Lastspitzen zu glätten oder zu verschieben,
 um den Einsatz teurer Spitzenlastkraftwerke zu verhindern. Bei
 entsprechenden Prognosen können diese Techniken auch dazu eingesetzt
 werden, Strom aus den erneuerbaren Energiequellen aufzunehmen und
-gezielt zu nutzen.
+gezielt zu nutzen. Im Jahr 2007 nutzen die europäischen
+Übertragungsnetzbetreiber Demand Side Management-Kapazitäten im Bereich von
+mehreren GWh~\cite{etso07demand}. Torriti et al.~\cite{torriti10demand}
+gehen von einem stetigen Wachstum der Kapazitäten in Europa aus, vgl.
+Tabelle \ref{tab:drforecast}. Zusammengenommen können momentan 2,9\% der
+Spitzenlast durch Demand Side Management verschoben werden.
 
-\todo{Impact, Siehe BEE-Studie}
+\begin{table}
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline
+    Jahr & Kapazität in GW \\
+    \hline
+    2008 & 11,45\\
+    2010 & 11,50\\
+    2013 & 12,15 \\
+    2015 & 12,82 \\
+    2020 & 13,32 \\
+    \hline
+  \end{tabular}
+  \caption{Prognose der Demand Side Management-Kapazitäten im Bereich
+  der UCTE. Angaben in GW}
+  \label{tab:drforecast}
+\end{table}
 
-Im Privathaushalt ist Demand Side Management jedoch noch nicht im Einsatz. Die
-Gründe hierfür sind vielfältig: Einerseits ist die notwendige Technik
-noch nicht weit verbreitet (Stichwort: Hausbussysteme), andererseits hat
-es sich bisher auch finanziell nicht gelohnt. Allerdings ist absehbar,
-dass nun die Zeit reif für Demand Side Management in Haushalten ist. Das
+Im Privathaushalt ist Demand Side Management jedoch noch nicht im
+Einsatz, hier können noch erhebliche Kapazitäten erschlossen werden. Die
+Gründe hierfür sind vielfältig: 
+
+\begin{enumerate}
+  \item Die notwendige Regelungstechnik ist in nur wenigen Haushalten
+    vorhanden. Die Grundlage für die Steuerung von Geräten ist ein
+    Hausbus, über den Steuersignale kommuniziert werden. Die gegenwärtig
+    verfügbaren Systeme (KNX, EIB) sind recht aufwendig und teuer,
+    sodass hier noch weitere Entwicklungen notwendig sind.
+  \item In die Haushaltsgeräte ist normalerweise kein Zugang für ein
+    Energiemanagementsystem eingebaut. Zum Beispiel gibt es bei einer
+    Spülmaschine üblicherweise keine Schnittstelle, um ein Startkommando
+    zu übermitteln.
+  \item Es gibt kaum finanzielle Anreize für Privathaushalte, um in
+    diese Technologien zu investieren. Gegenwärtig sind einzig
+    Nachtstromtarife darauf zugeschnitten, den Verbrauch in Nebenzeiten
+    zu fördern.
+\end{enumerate}
+
+\todo{MARK}
+
+Das
 zeigt sich auch daran, dass im Rahmen der E-Energy Initiative der
 Bundesregierung viele Projekte an dieser Idee arbeiten\todo{Referenz
 einfpgen}. Leider sind viele diese Projekte jedoch von den großen
