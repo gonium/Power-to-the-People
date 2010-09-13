@@ -474,58 +474,23 @@ Gründe hierfür sind vielfältig:
     zu fördern.
 \end{enumerate}
 
-\todo{MARK}
 
-Das
-zeigt sich auch daran, dass im Rahmen der E-Energy Initiative der
-Bundesregierung viele Projekte an dieser Idee arbeiten\todo{Referenz
-einfpgen}. Leider sind viele diese Projekte jedoch von den großen
-Stromkonzernen dominiert, sodass bezweifelt werden darf, dass die
-Projekte zu kundenorientierten Lösungen führen werden. 
+Im Rahmen der E-Energy Initiative der Bundesregierung arbeiten diverse
+Projekte daran, Demand Side Management-Technologien in Haushalte zu
+integrieren~\cite{web:e-energy}. Auch Gerätehersteller wie Miele
+integrieren spezielle Energiemanagementschnittstellen in ihre
+Geräte~\cite{miele10ifapresse}. Allen diesen Lösungen gemein ist jedoch,
+dass sie modellhaften Charakter haben und allenfals in Pilotprojekten
+getestet werden.
 
-
-Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
-Als großes verteiltes System muss die Umsetzung zu einem stabilen
-Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
-nicht zu Störungen des Gesamtsystems führen.
-
-Wir favorisieren dabei einen dezentralen Ansatz: Steuergeräte in den
-einzelnen Haushalten verhalten sich dabei autonom. Lediglich ein
-gewünschtes Lastprofil wird den Haushalten vorgegeben. Die einzelnen
-Haushalte entscheiden dann autonom, wie einzelne Geräte zu steuern sind.
-Die Verteilung des Lastprofils kann dabei durch standardisierte
-Protokolle über das Internet erfolgen.
-
-
-Für die Netzbetreiber / Messtellenbetreiber ist dies eine
-Herausforderung, da Kunden nicht bereit sind, für die neue Messtechnik
-zu bezahlen. Daher müssen Mehrwerte geschaffen werden.
-
-Kunden müssen diesen Mehrwert sehen und bereit sein, in diese Technik zu
-investieren. Dies kann natürlich auch komplett an den Stromversorgern
-vorbei passieren, siehe oben: Wenn die mySmartGrid-Technologie
-installiert ist, kann eine Genossenschaft gegründet werden.
-
-TODO: Modellierung von verschiedenen Lastgängen durch die Kombination
-von Schaltzeitpunkten und Gruppen von Haushalten / Gewerbebetrieben.
-Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
-pro Gruppe abrufen zu können. 
-
-
-
-
-\subsection{Datenschutz}\label{sub:datenschutz}
-
-Dies wird zum Beispiel an der Datenschutzproblematik im Umgang mit Smart
-Metern deutlich. Ein Smart Meter ist ein Stromzähler, der die Messwerte
-in kurzen Zeitintervallen (typisch sind 15 Minuten) an den Netzbetreiber
-überträgt und auch dem Stromkunden zugänglich macht. Einerseits sind
-diese Daten natürlich für den Stromkunden interessant, da er den
-Einfluss seines Verhaltens auf den Stromverbrauch vor Augen geführt
-bekommt und so insgesamt weniger verbrauchen wird.
-
-Schließlich führt die Erhebung von Stromverbrauchsinformationen auch zur
-Veränderung von Konsumgewohnheiten. Stromkunden können, wenn
+In diesen Pilotprojekten ist neben den Managementtechnologien vor allem
+die Einführung von intelligenten Stromzählern (Smart Metern) ein Thema.
+Smart Meter sind elektronische Stromzähler, welche die bekannten
+schwarzen Ferraris-Zähler ersetzen. Sie bieten neben der Anzeige des
+Gesamtzählerstandes auch die Möglichkeit, den Momentanverbrauch oder den
+Wochenverbrauch anzuzeigen. Einige Modelle bieten zudem auch die
+Möglichkeit, den Stromverbrauch an den Netzbetreiber zurückzumelden, oft
+in 15-minütigen Intervallen. Stromkunden können, wenn
 Informationen zum Momentanverbrauch unmittelbar zur Verfügung stehen,
 ihr Verhalten direkt verändern und so ihren Strombezug um 15-20\%
 reduzieren~\cite{geller2010smartgrid}. Ebenso ist es denkbar, mit den
@@ -536,14 +501,26 @@ automatisiert Hinweise gegeben werden, dass sich z.B. die Anschaffung
 eines energiesparenden Kühlschranks schon nach einem Jahr amortisiert
 hätte.
 
+Für die Netzbetreiber bzw. den Messtellenbetreiber ist dies eine
+Herausforderung, da Kunden nicht bereit sind, für die neue Messtechnik
+zu bezahlen. Zwar sind durch die direkte Rückmeldung von
+Stromverbrauchsdaten Einsparungen zu erwarten,
+jedoch stehen diese Einsparpotentiale in keinem Verhältnis zu
+den Mehrkosten der Smart Meter. Zudem erlauben gerade zeitlich eng
+aufgelöste Daten im 15-Minuten-Bereich erhebliche Rückschlüsse auf die
+Lebensgewohnheiten der Anschlussinhaber.
 
 
+\section{Datenschutz}\label{sub:datenschutz}
+Einerseits sind diese Daten natürlich für den Stromkunden interessant,
+da er den Einfluss seines Verhaltens auf den Stromverbrauch vor Augen
+geführt bekommt und so insgesamt weniger verbrauchen wird.
 
 Andererseits sind die Stromverbrauchsdaten aus Netzbetreibersicht auch
 sehr interessant, da sich hier völlig neue Möglichkeiten für
 Preismodelle und auch für das Marketing ergeben. Dazu muss man wissen,
 dass Privathaushalte im Moment durch Standardlastprofile abgerechnet
-werden, d.h. ein Netzbetreiber wird nicht für die real gelieferte
+werden, d.h. ein Verteilnetzbetreiber wird nicht für die real gelieferte
 Strommenge bezahlt, sondern auf der Basis eines durchschnittlichen
 Lastprofils und der Anzahl der versorgten Haushalte wird eine Pauschale
 abgerechnet. Mit Smart Metern kann nun der reale Verbrauch bestimmt
@@ -552,12 +529,26 @@ werden und wird in Zukunft wohl zur Grundlage der Abrechnung werden
 Bundesnetzagentur diskutiert.}. 
 
 Um diese Abrechnung vorzunehmen gehen die Netzbetreiber davon aus, dass
-die Stromverbrauchsdaten in hoher zeitlicher Auflösung an sie
-übertragen werden, um dann eine verbrauchsgenaue Abrechnung gegenüber
-den Stromanbietern machen zu können\todo{Struktur Strommarkt erläutern}.
-Diese Daten sind jedoch als sehr sensibel einzustufen, da hieraus auf
-Lebens- und Konsumgewohnheiten geschlossen werden kann.
-\todo{Bild Tagesrhythmus, Artikel KJM, FAZ-Artikel}
+die Stromverbrauchsdaten in hoher zeitlicher Auflösung an sie übertragen
+werden, um dann eine verbrauchsgenaue Abrechnung gegenüber den
+Stromanbietern machen zu können. Diese Daten sind jedoch als sehr
+sensibel einzustufen, da hieraus auf Lebens- und Konsumgewohnheiten
+geschlossen werden kann. 
+
+Ein beispielhafter Tagesverlauf des Autors ist in Abbildung
+\ref{fig:schlaflos} dargestellt.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=12cm]{figures/lastkurve-md-annotated.png}
+    \caption{Der Stromverbrauch des Autors am Beispiel eines Tages.}
+    \label{fig:schlaflos}
+  \end{center}
+\end{figure}
+
+
+
+\todo{Bild Tagesrhythmus, Artikel KJM,
+FAZ-Artikel}
 
 
 Die Einführung von SmartMetern birgt erhebliche Risiken für die
@@ -568,6 +559,8 @@ Quellen: Google Powermeter, Hersteller, Erfassung von
 Stellungnahme der Bundesnetzagentur zu den §21 EnGG. Welche Kriterien
 sind tatsächlich nötig?
 DuD-Artikel
+
+\todo{MARK}
 
 So weisen Narayanan und Shmtikov auf die Möglichkeiten der
 ``De-Anonymisierung'' von Datensätzen hin~\cite{narayanan2010pii}. Sie
@@ -600,6 +593,31 @@ Bewertung} und darüber hinaus eine grundlegend abzulehnende Forderung.
 Jeder Zähler verfügt über mehrere Register, in denen der Stromverbrauch
 zu unterschiedlichen Tarifzeiten abgelegt werden kann --- eine zeitnahe
 Übertragung in hoher Auflösung ist schlicht nicht erforderlich.
+
+Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
+Als großes verteiltes System muss die Umsetzung zu einem stabilen
+Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
+nicht zu Störungen des Gesamtsystems führen.
+
+Wir favorisieren dabei einen dezentralen Ansatz: Steuergeräte in den
+einzelnen Haushalten verhalten sich dabei autonom. Lediglich ein
+gewünschtes Lastprofil wird den Haushalten vorgegeben. Die einzelnen
+Haushalte entscheiden dann autonom, wie einzelne Geräte zu steuern sind.
+Die Verteilung des Lastprofils kann dabei durch standardisierte
+Protokolle über das Internet erfolgen.
+
+
+Kunden müssen diesen Mehrwert sehen und bereit sein, in diese Technik zu
+investieren. Dies kann natürlich auch komplett an den Stromversorgern
+vorbei passieren, siehe oben: Wenn die mySmartGrid-Technologie
+installiert ist, kann eine Genossenschaft gegründet werden.
+
+TODO: Modellierung von verschiedenen Lastgängen durch die Kombination
+von Schaltzeitpunkten und Gruppen von Haushalten / Gewerbebetrieben.
+Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
+pro Gruppe abrufen zu können. 
+
+
 
 \section{Chancen für Open-Source}\label{sec:chancen_open-source}
 In kundenfreundlichen Lösungen liegt die Chance für Open-Source
