@@ -8,7 +8,7 @@
 %\documentclass[12pt,BCOR=8.5mm]{scrbook}
 \documentclass[12pt,BCOR=8.5mm]{scrartcl}
 \title{Power to the People}
-\subtitle{Warum das Stromnetz Open-Source braucht}
+\subtitle{Bürgerorienterte Lösungen für das Stromnetz der Zukunft}
 \author{Mathias Dalheimer}
 %% PDF SETUP
 \usepackage[pdftex, bookmarks, colorlinks, breaklinks,
@@ -544,25 +544,47 @@ Ein beispielhafter Tagesverlauf des Autors ist in Abbildung
     \label{fig:schlaflos}
   \end{center}
 \end{figure}
+Die Kurve gibt den Stromverbrauch in einem fünfminütigen Intervall
+wieder. Bei Markierung (1) ist der Autor aufgestanden, weil er aufgrund
+einer Kanada-Reise an Jetlag litt. Die Benutzung von Wasserkocher und
+der Rechners schlägt sich deutlich nieder. Gegen 4:00 wurde
+weitergeschlafen. Um acht Uhr morgens (2) läuft die kleine
+Senseo-Kaffeemaschine, tagsüber war der Autor arbeiten. Während dieser
+Zeit führt der Kühlschrank zu regelmässigen Ausschlägen (3). Gegen 18:00
+kam der Autor nach Hause und benutzte die Mikrowelle.
 
+Die Gerätesignaturen sind natürlich spezifisch für einzelne Geräte bzw.
+Betriebszustände. Eine Waschmaschine bietet verschiedene Programme, die
+auch zu leicht unterschiedlichen Signaturen führen. Zusätzlich führt die
+Reduktion auf --- in diesem Beispiel --- fünf-Minuten-Messintervalle zum
+Verlust von Information. Die Senseo-Kaffeemaschine (2) zeigt bei
+einminütigen Messintervallen einen recht spezifischen Spitzenverbrauch
+von 1400 Watt für ca. 1 Minute. Wenn die Werte jedoch als
+Durchschnittsverbrauch der letzten fünf Minuten dargestellt werden,
+bleibt davon nur noch eine kleine Spitze übrig.
 
+Derzeit sehen die Smart Meter-Infrastrukturen eine zeitnahe Übermittlung
+von 15-Minuten-Intervallwerten an die Messstellenbetreiber vor. Daraus
+lassen sich immer noch einzelne Geräte identifizieren, wobei natürlich
+wenig charakteristische Signaturen herausgemittelt
+werden\footnote{Auch hier gilt natürlich das Nyquist-Theorem.}. Dennoch
+ergeben sich hier erhebliche Privacy-Probleme: Durch statistische
+Verfahren lässt sich recht einfach entscheiden, wie oft und wie lange
+ein Bewohner in der Wohnung ist. Daraus kann zum Beispiel abgeleitet
+werden, ob der Bewohner einer regelmässigen Tätigkeit nachgeht. Weitere
+Betrachtungen zu dieser Thematik finden sich bei \todo{Referenz Artikel
+KJM, FAZ-Artikel Constanze Kurz}
 
-\todo{Bild Tagesrhythmus, Artikel KJM,
-FAZ-Artikel}
+Derzeit argumentieren die Messstellenbetreiber, dass die Installation
+von Zählern und die Übertragung und Speicherung von Verbrauchsdaten für
+die Abrechnung notwendig ist. Die Einwilligung zur Datenverarbeitung
+lassen sie sich durch den Anschlussinhaber bestätigen. Da dieser jedoch
+üblicherweise gar keine andere Wahl hat, steht diese Argumentation
+juristisch auf tönernen Füßen~\todo{DuD, Gutachten}. 
 
-
-Die Einführung von SmartMetern birgt erhebliche Risiken für die
-Privatsphäre. Definition Privacy vs. Security
-
-Quellen: Google Powermeter, Hersteller, Erfassung von
-15-Minuten-Interfaces
-Stellungnahme der Bundesnetzagentur zu den §21 EnGG. Welche Kriterien
-sind tatsächlich nötig?
-DuD-Artikel
-
-\todo{MARK}
-
-So weisen Narayanan und Shmtikov auf die Möglichkeiten der
+Auch wenn die Daten anonymisiert werden würden, lassen sich unter
+Umständen die Datenbestände wieder auf einzelne Personen bzw.
+Messstellen beziehen. So weisen Narayanan und Shmtikov auf die Möglichkeiten der
 ``De-Anonymisierung'' von Datensätzen hin~\cite{narayanan2010pii}. Sie
 beschreiben dabei die prinzipielle Unmöglichkeit, einmal erhobene Daten
 zu anonymisieren und dabei die Rückverfolgbarkeit auszuschliessen.
@@ -572,60 +594,37 @@ Systementwicklung integriert werden kann~\cite{shapiro2010privacy}. Eine
 nachträgliche Integration von Privacy in ein bereits existierendes
 System ist quasi nicht möglich.
 
-Fazit: Einmal in Umlauf gebrachte Daten können wieder auf individuelle
-Verbraucher zurückgeführt werden.
+Als Fazit lässt sich festhalten, dass einmal in Umlauf gebrachte Daten
+wieder auf individuelle Verbraucher zurückgeführt werden können.
+Stromverbrauchswerte sind in ihrer Sensibilität mit Bankdaten
+gleichzusetzen sind. Es ist unverständlich, dass hier keine besonderen
+Anforderungen an die Verarbeitung von solchen Daten vorgesehen sind.
 
+Generell ist die Datenübertragung zum Messstellenbetreiber natürlich
+nicht zur Abrechnung erforderlich. Moderne Zähler sind mit mehreren
+"`Zählregistern"' ausgestattet. Abhängig von einzelnen Tarifstufen
+werden gemessene Kilowattstunden auf den verschiedenen Zählregistern
+erfasst. Einmal im Monat können diese Zählregisterstände dann an den
+Messstellenbetreiber übertragen werden, ohne dass Rückschlüsse auf die
+Lebensgewohnheiten des Anschlussinhabers möglich sind. Auch die
+Bundesnetzagentur hat die Anforderungen an Smart Meter kürzlich
+konkretisiert: Eine zeitnahe Übertragung der Messwerte an den
+Messstellenbetreiber ist nicht erforderlich\todo{Referenz Stellungnahme EDL21-Zähler
+Bundesnetzagentur}. In den Niederlanden wurde eine Smart
+Metering-Infrastuktur flächendeckend installiert. Nach Bekanntwerden der
+Datenschutz-Problematik wurde die Fernauslesung aufgrund von massiven
+Protesten bis jetzt nicht in Betrieb genommen\todo{Quelle suchen}.
+Bleibt zu hoffen, dass es in Deutschland nicht zu einer vergleichbaren
+Situation kommt.
 
-\begin{enumerate}
-  \item Zeige \& erkläre einen Tagesverlauf, zeige, dass daraus sehr
-	persönliche Informationen extrahiert werden können.
-  \item Diskutiere rechtliche Rahmenbedingungen: DuD-Artikel, Gutachten
-	ULD Schleswig-Holstein -> gesetzliche Rahmenbedingungen müssen
-	geschaffen werden.
-\end{enumerate}
-
-
-
-Die Netzbetreiber versuchen sich im Moment dadurch abzusichern, dass die
-Stromkunden ihnen eine Einwilligung geben. Dies ist jedoch juristisch
-eine sehr optimistische Herangehensweise \todo{Artikel DuD, Rechtliche
-Bewertung} und darüber hinaus eine grundlegend abzulehnende Forderung.
-Jeder Zähler verfügt über mehrere Register, in denen der Stromverbrauch
-zu unterschiedlichen Tarifzeiten abgelegt werden kann --- eine zeitnahe
-Übertragung in hoher Auflösung ist schlicht nicht erforderlich.
-
-Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
-Als großes verteiltes System muss die Umsetzung zu einem stabilen
-Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
-nicht zu Störungen des Gesamtsystems führen.
-
-Wir favorisieren dabei einen dezentralen Ansatz: Steuergeräte in den
-einzelnen Haushalten verhalten sich dabei autonom. Lediglich ein
-gewünschtes Lastprofil wird den Haushalten vorgegeben. Die einzelnen
-Haushalte entscheiden dann autonom, wie einzelne Geräte zu steuern sind.
-Die Verteilung des Lastprofils kann dabei durch standardisierte
-Protokolle über das Internet erfolgen.
-
-
-Kunden müssen diesen Mehrwert sehen und bereit sein, in diese Technik zu
-investieren. Dies kann natürlich auch komplett an den Stromversorgern
-vorbei passieren, siehe oben: Wenn die mySmartGrid-Technologie
-installiert ist, kann eine Genossenschaft gegründet werden.
-
-TODO: Modellierung von verschiedenen Lastgängen durch die Kombination
-von Schaltzeitpunkten und Gruppen von Haushalten / Gewerbebetrieben.
-Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
-pro Gruppe abrufen zu können. 
-
-
-
-\section{Chancen für Open-Source}\label{sec:chancen_open-source}
+\section{Open-Source Demand Side Management: mySmartGrid}\label{sec:chancen_open-source}
+\todo{MARK}
 In kundenfreundlichen Lösungen liegt die Chance für Open-Source
 Technologien. Indem die Technologien direkt von den Anwendern entwickelt
 werden, sind die Chancen groß, dass der Nutzen für Privathaushalte im
-Vordergrund steht.  Ich denke auch, dass es in Zusammenarbeit mit
-kleinen Stadtwerken in öffentlicher Hand möglich ist, eine
-Strommanagement-Infrastruktur kostendeckend einzuführen.
+Vordergrund steht.  In Zusammenarbeit mit kleinen Stadtwerken in
+öffentlicher Hand kann eine Strommanagement-Infrastruktur kostendeckend
+etabliert werden.
 
 Im Projekt \emph{mySmartGrid} wird zur Zeit in Kaiserslautern eine
 entsprechende Infrastruktur aufgebaut. Das Projekt wird vom Land
@@ -871,6 +870,32 @@ Für mySmartGrid favorisieren wir das Genossenschaftsmodell. Unser Plan
 ist es, die Geräte aus dem Projekt bei den Teilnehmern zu belassen und
 die Gründung einer Genossenschaft anzustoßen. Die Herausforderung
 bleibt: Wie kann Demand-Side Management kostendeckend eingesetzt werden?
+
+
+Gleichzeitig sind hier natürlich Probleme des Systemdesigns zu beachten:
+Als großes verteiltes System muss die Umsetzung zu einem stabilen
+Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
+nicht zu Störungen des Gesamtsystems führen.
+
+Wir favorisieren dabei einen dezentralen Ansatz: Steuergeräte in den
+einzelnen Haushalten verhalten sich dabei autonom. Lediglich ein
+gewünschtes Lastprofil wird den Haushalten vorgegeben. Die einzelnen
+Haushalte entscheiden dann autonom, wie einzelne Geräte zu steuern sind.
+Die Verteilung des Lastprofils kann dabei durch standardisierte
+Protokolle über das Internet erfolgen.
+
+
+Kunden müssen diesen Mehrwert sehen und bereit sein, in diese Technik zu
+investieren. Dies kann natürlich auch komplett an den Stromversorgern
+vorbei passieren, siehe oben: Wenn die mySmartGrid-Technologie
+installiert ist, kann eine Genossenschaft gegründet werden.
+
+TODO: Modellierung von verschiedenen Lastgängen durch die Kombination
+von Schaltzeitpunkten und Gruppen von Haushalten / Gewerbebetrieben.
+Eventuell dynamische Anpassung der Gruppen, um gleiche ``Steuergrößen''
+pro Gruppe abrufen zu können. 
+
+
 
 \section{Schlussfolgerungen}
 Smart Grids, "`intelligente Stromnetze"', sind eines der Themen, welche
