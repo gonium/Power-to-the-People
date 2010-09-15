@@ -8,7 +8,7 @@
 %\documentclass[12pt,BCOR=8.5mm]{scrbook}
 \documentclass[12pt,BCOR=8.5mm]{scrartcl}
 \title{Power to the People}
-\subtitle{Bürgerorienterte Lösungen für das Stromnetz der Zukunft}
+\subtitle{B\"urgerorienterte L\"osungen f\"ur das Stromnetz der Zukunft}
 \author{Mathias Dalheimer}
 %% PDF SETUP
 \usepackage[pdftex, bookmarks, colorlinks, breaklinks,
@@ -618,45 +618,78 @@ Bleibt zu hoffen, dass es in Deutschland nicht zu einer vergleichbaren
 Situation kommt.
 
 \section{Open-Source Demand Side Management: mySmartGrid}\label{sec:chancen_open-source}
-\todo{MARK}
-In kundenfreundlichen Lösungen liegt die Chance für Open-Source
-Technologien. Indem die Technologien direkt von den Anwendern entwickelt
-werden, sind die Chancen groß, dass der Nutzen für Privathaushalte im
-Vordergrund steht.  In Zusammenarbeit mit kleinen Stadtwerken in
-öffentlicher Hand kann eine Strommanagement-Infrastruktur kostendeckend
-etabliert werden.
+
+Wie oben bereits dargestellt, ist Demand Side Management eine
+interessante Technik vor allem für die Verteilnetzbetreiber. Diese
+müssen den Strom von privaten Photovoltaikanlagen aufnehmen und
+verteilen. In der Westpfalz kommt es momentan in den ersten Gemeinden zu
+einem Anschlussstop für neue PV-Anlagen, weil das Leitungsnetz die
+zusätzlichen Einspeisungen nicht aufnehmen kann. Neben der dezentralen
+Speicherung von PV-Strom kann auch Demand Side Management dabei helfen,
+mehr PV-Anlagen an das Netz zu bringen.
 
 Im Projekt \emph{mySmartGrid} wird zur Zeit in Kaiserslautern eine
 entsprechende Infrastruktur aufgebaut. Das Projekt wird vom Land
 Rheinland-Pfalz im Rahmen des Konjunkturprogramm II gefördert. Alle
 Technologien werden in enger Zusammenarbeit sowohl mit den
-Stromverbrauchern als auch mit den Netzbetreibern aus der Region
-(Technische Werke Kaiserslautern, Pfalzwerke) entwickelt.  Wir bauen auf
-ein Ökosystem von freien Lösungen.  Bei der Hardware setzen wir auf
+Stromverbrauchern als auch mit den Verteilnetzbetreibern aus der Region
+(Technische Werke Kaiserslautern, Pfalzwerke) entwickelt.  Unser Ziel
+ist es, ein Ökosystem von freien Komponenten aufzubauen, aus denen dann
+für einen konkreten Anwendungsfall eine Lösung kombiniert werden kann.
+Bei der Hardware setzen wir auf modifizierte
 Consumer-Geräte, die einen hohen Verbreitungsgrad haben.  Ein möglichst
 großer Anteil der Funktionen soll in Software implementiert werden, da
 diese quasi ohne weitere Kosten vervielfältigt werden kann.
 Selbstverständlich werden alle Projektresultate (Soft- und Hardware)
 unter einer Open-Source Lizenz veröffentlicht. 
 
-Gleichzeitig werden ca.  1000 Haushalte in Kaiserslautern und Umgebung
-mit der Technik ausgerüstet. Da die Installation von Geräten durch
-Handwerker aus der Region erfolgt, ist eine möglichst gute
-Installationsunterstützung durch Softwarewerkzeuge notwendig.
+Im Projekt wird die Kommunikation nicht über Techniken wie Powerline
+oder GPRS-Verbindungen umgesetzt, sondern wir benutzen die bereits
+existierende Internet-Flatrate unserer Teilnehmer. Die Größe der
+übertragenen Daten ist dabei sehr gering. Die anfängliche Idee,
+das Mobilfunknetz zur Datenübertragung zu benutzen, wurde schnell
+verworfen --- es wäre schlicht zu teuer.
 
-Das Projekt ist in drei Phasen gegliedert, die ich im Folgenden
-darstelle.
+Momentan werden bis zu 1000 Haushalte in Kaiserslautern und Umgebung
+mit der Technik ausgerüstet. Die Geräte müssen sich also im
+Praxiseinsatz bewähren. Da die Installation von Geräten durch
+Handwerker aus der Region erfolgt, ist eine möglichst gute
+Installationsunterstützung durch Softwarewerkzeuge notwendig. Die
+bisherigen Erfahrungen zeigen, dass vor allem die Integration der Geräte
+in die privaten Heimnetzwerke unserer Projektteilnehmer aufwändig ist.
 
 \subsection{Messen und Verstehen}\label{sub:messenverstehen}
 
 In der ersten Projektphase geht es darum, den Teilnehmern ein
 Verständnis für den individuellen Stromverbrauch zu geben. Hierzu
-benutzen wir den "`Flukso"', um den den Stromverbrauch eines Haushalts
-zentral zu messen.\todo{Bild Flukso einfügen, Link}. Technisch ist der
-Flukso ein WLAN-Router, basiert auf OpenWRT und benutzt einen kleinen
-Mikrocontroller zur Messwerterfassung. Die Installation erfordert keine
-Neuverkabelung, da die Messung indirekt über Halleffektsensoren erfolgt.
-Die Messwerte werden zur mySmartGrid-Webseite übertragen, wo sie
+benutzen wir den "`Flukso"'~\cite{web:flukso}, um den den 
+Stromverbrauch eines Haushalts zentral zu messen, vgl. 
+Abb. \ref{fig:flukso}.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=12cm]{figures/Flukso.jpg}
+    \caption{Der Flukso ist ein Strommessgerät. An den Schraubklemmen
+    an der Oberseite werden die Sensoren angeschlossen. Für die
+    Kommunikation sind eine WLAN-Schnittstelle und eine
+    Ethernet-Schnittstelle integriert. Quelle: CC-BY-SA-NC Mathias
+    Dalheimer.}
+    \label{fig:flukso}
+  \end{center}
+\end{figure}
+Technisch ist der Flukso ein modifizierter WLAN-Router. Das System
+besteht aus zwei Teilen: Ein kleiner Mikrocontroller kümmert sich um die
+Messwerterfassung. Die Installation erfordert keine Neuverkabelung, da
+die Messung indirekt über Halleffektsensoren erfolgt. Diese können mit
+einfach um die existierenden Phasenzuleitungen gelegt werden. Die
+Sensoren geben eine Spannung zwischen 0V und 5V aus, die proportional
+zum Strom in den Phasenleitungen ist. Der Mikrocontroller misst diese
+Spannung und rekonstruiert den aktuellen Stromverbrauch. Über die
+serielle Schnittstelle werden diese Messwerte an das WLAN-Routerboard
+übertragen. 
+
+Das Routerboard basiert auf einem Atheros-Chipsatz und läuft unter
+OpenWRT. Die Daten werden von einem Lua-Script entgegengenommen,
+aufbereitet und dann zur mySmartGrid-Webseite übertragen, wo sie
 visualisiert werden können. Ausserdem können die Messwerte auch lokal
 abgefragt werden.
 
@@ -667,29 +700,54 @@ fünfminütige Werte. Danach sinkt die Auflösung rapide. Wer die Daten
 dennoch in hoher Auflösung haben möchte, muss die API der Webseite
 benutzen. Weil viele Teilnehmer dies tun möchten, haben wir auch einen
 "`Rekorder-Dienst"' implementiert, welcher die Daten in höchster
-Auflösung mitschreiben kann. 
+Auflösung mitschreiben kann. Die API ist als RESTful Webservice
+umgesetzt und liefert die verfügbaren Daten im JSON-Format.
 
-Es sind auch Open-Source Alternativen zum Flukso vorhanden, zum Beispiel
-der Volkszähler \todo{link}. Obwohl wir ihn in diesem Projekt nicht einsetzen, sind
-im Moment Diskussionen im Gange, die Schnittstellen des Fluksos und des
-Volkszählers kompatibel zu machen. Aber auch die kommerziellen und von
-den Netzbetreibern eingesetzten Smart Meter müssen eine lokal
-auslesbare, optische Schnittstelle bieten \todo{Quelle: Positionspapier
-Bundesnetzagentur}.  Die Umsetzung dieser Schnittstelle bleibt jedoch
-zunächst dem Hersteller überlassen. Viele Hersteller setzen auf den
-elektronischen Einheitszähler, der vom VDE \todo{Referenz
-Netzkompetenzzentrum} standardisiert wird. Über die optische serielle
-Schnittstelle wird jede Sekunde ein Datagramm mit allen relevanten
-Informationen ausgesandt. Ein Mikrocontroller mit zugehöriger Fotodiode
-ist prinzipiell alles, was zum Auslesen benötigt wird --- eine
+Die Webseite bietet auch die Möglichkeit, seine eigenen
+Stromverbrauchswerte anderen Benutzern der Webseite zugänglich zu
+machen. Diese können dann die eigenen Stromkurven mit denen von
+anderen Benutzern vergleichen. Obwohl dies erhebliche
+Privacy-Implikationen hat, geben die meisten Benutzer ihre
+Stromverbrauchswerte frei. Der Vergleich mit anderen ist auch Gegenstand
+von Diskussionen im Forum auf der Webseite.
+
+Natürlich kann man nun argumentieren, dass die Daten eigentlich nicht
+übertragen werden müssen. Wir gehen diesen Weg, damit auch unbedarfte
+Projektteilnehmer eine schnelle Visualisierung ihrer Daten in Anspruch
+nehmen können, ohne eine eigene Infrastruktur betreiben zu müssen. Mit
+dem Volkszähler~\cite{web:volkszaehler} ist eine Alternative zum Flukso
+verfügbar, bei der die anonyme Speicherung von Daten im Vordergrund
+steht.
+
+Aber auch die kommerziellen und von den Messstellenbetreibern
+eingesetzten Smart Meter müssen eine lokal auslesbare
+Kundenschnittstelle bieten \todo{Quelle: Positionspapier
+Bundesnetzagentur}.  Prinzipiell ist es natürlich möglich, die Smart
+Meter in die mySmartGrid-Infrastruktur anzubinden.  Über die optische
+serielle Kundenschnittstelle wird jede Sekunde ein Datagramm mit allen
+relevanten Informationen ausgesandt. Ein Mikrocontroller mit zugehöriger
+Fotodiode ist prinzipiell alles, was zum Auslesen benötigt wird --- eine
 Open-Source Lösung hierfür fehlt jedoch derzeit.
+Die momentan verfügbaren Ausleseköpfe sind jedoch entweder als
+USB-Adapter oder auch als Wireless MBUS-Komponenten ausgelegt. Eine
+direkte Übermittlung der Daten zur mySmartGrid-Webseite erfordert also
+noch weitere Komponenten. Der Flukso ist momentan die preiswerteste
+Variante.
+
+Hinzu kommt, dass die Umsetzung der Kundenschnittstelle zunächst dem
+Hersteller überlassen ist. Viele Hersteller setzen auf den
+elektronischen Einheitszähler, der vom VDE \todo{Referenz
+Netzkompetenzzentrum} standardisiert wird. Aber selbst hier finden sich
+Inkompatibilitäten in den Umsetzungen --- derzeit ist kein einheitlicher
+Übertragungsstandard für die lokale Schnittstelle absehbar.
+
 
 Das Messen ist allerdings zumeist nicht genug, um eine nachhaltige
 Änderung des Stromverbrauchsverhaltens anzuregen. Dazu setzen wir auf
 zwei Ansätze:
 
 \begin{enumerate}
-  \item Einerseits helfen automatisierte Analysen, den eigenen
+  \item Automatisierte Analysen helfen, den eigenen
     Stromverbrauch zu beurteilen. Dazu sind zunächst recht fein
     aufgelöste Stromverbrauchswerte nötig, um einzelne Verbraucher
     erkennen zu können. Daher muss dieses Verfahren optional bleiben und
@@ -699,17 +757,17 @@ zwei Ansätze:
     konkrete Handlungsempfehlungen zu geben, z.B. "`Tauschen Sie Ihren
     Kühlschrank aus --- das amortisiert sich nach $2,4$ Jahren."' 
     Diese Analysen sind im Moment noch im Forschungsstadium.
-  \item Andererseits ist es für Stromkunden hilfreich, den Effekt ihrer
-    Handlungen unmittelbar zu sehen. Wenn ich den Wasserkocher
-    einschalte, dann verbrauche ich auf einmal 2kW - das führt zu einem
+  \item Weiterhin ist es für Stromkunden hilfreich, den Effekt ihrer
+    Handlungen unmittelbar zu sehen. Ein Wasserkocher 
+    verbraucht in etwa 2kW - das führt zu einem
     gut sichtbaren Sprung in der Stromverbrauchskurve. Die logische
     Konsequenz wäre es, nur die wirklich benötigte Menge Wasser in den
-    Wasserkocher zu füllen.
+    Wasserkocher zu füllen und das Wasser wirklich zu benutzen.
 \end{enumerate}
 
 Zur Anzeige der Verbrauchsinformationen haben wir uns für den
-"`Chumby"` entschieden\todo{Bild}. Der Chumby basiert technisch
-ebenfalls auf einem WLAN-Router, hat allerdings einen Touchscreen und
+"`Chumby"' entschieden, vgl. Abbildung \todo{Bild}. Der Chumby basiert technisch
+ebenso wie der Flukso auf einem WLAN-Router, hat allerdings einen Touchscreen und
 einen Lautsprecher integriert. Es sind schon viele Applikationen für den
 Chumby verfügbar, sodass das Gerät neben Stromverbrauchsinformationen
 auch den Wetterbericht anzeigen und Internetradio abspielen kann. Unsere
@@ -718,27 +776,30 @@ Darstellungsformen für die Strominformationen am Sinnvollsten sind,
 werden wir in der kommenden Zeit zusammen mit unseren Projektteilnehmern
 erarbeiten.
 
-\todo{Andere Anwendung, z.B. Monitoring von PV-Anlagen und Assisted
-Living}
+Auch für andere Anwendungen ist die Messung von Stromverbräuchen
+interessant. Für die Eigentümer von Photovoltaik-Anlagen werden wir in
+Zukunft spezielle Monitoring-Möglichkeiten anbieten. Dabei wird über
+eine lokale Wettervorhersage der mögliche Ertrag für den kommenden Tag
+prognostiziert und dann mit der tatsächlichen Produktion verglichen.
+Kommt es hier zu größeren Abweichungen, kann der Eigentümer der Anlage
+verständigt werden.
 
 \subsection{Regelung von Verbrauchern}\label{sub:steuern}
 
 Der nächste Schritt ist das Steuern von Verbrauchern im Haushalt.
 Mit Hilfe von meteorologischen Modellen ist es möglich, die
 Stromproduktion auf Tagesfrist recht genau vorherzusagen. Wenn also
-morgen Mittag der Wind weht, führt dies auch zu einer erhöhten
-Stromproduktion. Diese Information kann dann einen Tag im Voraus zu den
-Haushalten transportiert werden. Die Nutzer können dann diese
-Information angezeigt bekommen und ihr Verhalten entsprechend anpassen
---- für eine Spülmaschine ist es meist recht egal, ob sie morgens oder
-mittags läuft.
+morgen Mittag der Wind weht oder die Sonne scheint, führt dies auch zu
+einer erhöhten Stromproduktion. Diese Information kann dann einen Tag im
+Voraus zu den Haushalten transportiert werden. Die Nutzer können dann
+diese Information angezeigt bekommen und ihr Verhalten entsprechend
+anpassen --- für eine Spülmaschine ist es meist recht egal, ob sie
+morgens oder mittags läuft.
 
 Natürlich ist dies aber nicht genug, denn eigentlich sollte diese
 Regelung automatisch passieren. Leider bieten die meisten
 Haushaltsgeräte keine Möglichkeit, Steuerbefehle à la "`heute mittag um
-14:00 Strom verbrauchen"' zu verarbeiten. \footnote{Meines Wissens nach
-gibt es nur eine Waschmaschine von Miele, die es überhaupt erlaubt, in
-ein Hausbussystem integriert zu werden.} Ebenso ungelöst ist die Frage
+14:00 Strom verbrauchen"' zu verarbeiten. Ebenso ungelöst ist die Frage
 nach einem universellen und nachrüstbaren Bussystem, welches diese
 Steuerinformationen zu den Verbrauchern transportiert. Bussysteme wie
 EIB und KNX sind nur dann sinnvoll einsetzbar, wenn gleichzeitig größere
@@ -747,20 +808,42 @@ Systeme auch recht teuer. Dies schließt alle Leute aus, die in einer
 Mietwohnung wohnen, denn beim Auszug ist es nicht ohne weiteres
 möglich, das Bussystem mitzunehmen.
 
+
 Mit "`digitalStrom"' wird derzeit ein anderes System entwickelt, welches
 mit relativ geringem Aufwand nachrüstbar ist und Steuerinformationen
 über das Stromnetz transportiert. Dieses System ist jedoch noch nicht am
-Markt verfügbar.
-
+Markt verfügbar --- die Markteinführung wurde in den vergangenen Jahren
+immer wieder verschoben. Ausserdem ist das digitalStrom-System eine
+proprietäre Lösung, die nur von einem Anbieter angeboten wird. 
 
 Langfristig ist eine Lösung wünschenswert, die eine IP-basierte
-Kommunikationsinfrastruktur auf kleinen Mikrocontrollern umsetzt, damit
-die Lösung bezahlbar bleibt. Meine eigenen Experimente mit 6LoWPAN und
-funkbasierter Kommunikation auf der Basis von 868 MHz zeigen, dass eine
-solche Lösung sehr wohl kostengünstig umzusetzen ist\todo{Referenz
-Octobus, Bild}. Mit Contiki \todo{Referenz} steht auch ein Open-Source
-Betriebssystem zur Verfügung. Alternativ ist auch mit Ethersex
-\todo{Referenz} eine etablierte Lösung vorhanden. 
+Kommunikationsinfrastruktur auf kleinen Mikrocontrollern umsetzt. Eine
+solche Lösung wäre bezahlbar, gleichzeitig könnte durch die Verwendung
+von IPv6 das Problem der Adressvergabe an die Endgeräte gelöst werden.
+Meine eigenen Experimente mit 6LoWPAN und funkbasierter Kommunikation
+auf der Basis von 868 MHz zeigen, dass eine solche Lösung sehr wohl
+kostengünstig umzusetzen ist\todo{Referenz Octobus}.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=12cm]{figures/raven-adapter.JPG}
+    \caption{Logikteil des OctoBus-Prototyps, basierend auf dem AVR
+    Raven Evaluation Kit. Auf dem Kit läuft Contiki. Ein externes Relais
+    wird geschaltet, wenn ein entsprechendes UDP-Paket empfangen wird.
+    Bild: CC-BY-NC-SA Mathias Dalheimer}
+    \label{fig:raven-adapter}
+  \end{center}
+\end{figure}
+Der Prototyp "`OctoBus"' kann derzeit von beliebigen IPv6-Rechnern aus
+ein Relaus schalten, siehe Abb. \ref{fig:raven-adapter}.  Als
+Betriebssystem benutzt OctoBus Contiki, \todo{Referenz}.
+Alternativ ist auch mit Ethersex \todo{Referenz} eine etablierte Lösung
+vorhanden. Da hochintegrierte Funkchipsätze sowie leistungsfähige
+8Bit-Mikrocontroller verfügbar sind, halte ich es für realistisch, eine
+Funkschaltsteckdose für 20 Euro Materialkosten herstellen zu
+können~\footnote{Die Kalkukation ist auf der OctoBus-Seite
+verfügbar}.
+
+\todo{MARK}
 
 Um die Entwicklung voran zu treiben setzen wir im Projekt mySmartGrid
 auf die Steuerung von Wärmespeichern wie Kühlgeräte und Wärmepumpen. Wir
