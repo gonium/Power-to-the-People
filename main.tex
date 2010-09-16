@@ -9,10 +9,10 @@
 \documentclass[12pt,BCOR=8.5mm]{scrartcl}
 \title{Power to the People}
 \subtitle{Das Stromnetz der Zukunft}
-\author{Mathias Dalheimer}
+\author{Mathias Dalheimer \texttt{<md@gonium.net>}}
 %% PDF SETUP
 \usepackage[pdftex, bookmarks, colorlinks, breaklinks,
-pdftitle=\title,pdfauthor=\author,plainpages=false]{hyperref}  
+pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}  
 \hypersetup{linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,plainpages=false} 
 
 \clubpenalty=3000 % adjust for widows and orphans 10000 is max
@@ -772,15 +772,29 @@ zwei Ansätze:
 \end{enumerate}
 
 Zur lokalen Anzeige der Verbrauchsinformationen bekommen die Teilnehmer
-zusätzlich auch einen "`Chumby"', vgl. Abbildung \todo{Bild}. Der Chumby
-basiert technisch ebenso wie der Flukso auf einem WLAN-Router, hat
-allerdings einen Touchscreen und einen Lautsprecher integriert. Es sind
-schon viele Applikationen für den Chumby verfügbar, sodass das Gerät
-neben Stromverbrauchsinformationen auch den Wetterbericht anzeigen und
-Internetradio abspielen kann. Unsere Nutzer können sich die
-Applikationen selbst zusammenstellen. Welche Darstellungsformen für die
-Strominformationen am Sinnvollsten sind, werden wir in der kommenden
-Zeit zusammen mit unseren Projektteilnehmern erarbeiten.
+zusätzlich auch einen "`Chumby"', vgl. Abbildung \ref{fig:chumby}. 
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=\imgwidth]{figures/chumby.jpg}
+    \caption{Der Chumby zeigt kleine Widgets an: Wetterbericht,
+    Nachrichten und zukünftig auch den Stromverbrauch. Mit dem
+    integrierten Internetradio ist er optimal als Küchenradio
+    einzusetzen.}
+    \label{fig:chumby}
+  \end{center}
+\end{figure}
+Der Chumby basiert technisch ebenso wie der Flukso auf einem
+WLAN-Router, hat allerdings einen Touchscreen und einen Lautsprecher
+integriert. Es sind schon viele Applikationen für den Chumby verfügbar,
+sodass das Gerät neben Stromverbrauchsinformationen auch den
+Wetterbericht anzeigen und Internetradio abspielen kann. Da der Chumby
+permanent angeschaltet ist, kann er im Hintergrund Informationen
+anzeigen. Diese müssen auf einen Blick verständlich sein. Das Ziel ist
+hier, eine permanente Verbrauchsanzeige zu realisieren.  Welche
+Darstellungsformen für die Strominformationen am Sinnvollsten sind,
+werden wir in der kommenden Zeit zusammen mit unseren Projektteilnehmern
+erarbeiten. Zusätzlich wird der Chumby auch als Schaltzentrale für den
+Haushalt genutzt, siehe Abschnitt \ref{sub:steuern}.
 
 Auch für andere Anwendungen ist die Messung von Stromverbräuchen
 interessant. Für die Eigentümer von Photovoltaik-Anlagen werden wir in
