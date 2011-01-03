@@ -6,10 +6,11 @@
 % (2) texhash
 %\documentclass[BCOR=8.5mm,DIV=calc,open=right,pagesize=auto,a5paper]{scrbook}
 %\documentclass[12pt,BCOR=8.5mm]{scrbook}
-\documentclass[12pt,BCOR=8.5mm]{scrartcl}
+%\documentclass[12pt,BCOR=8.5mm]{scrartcl}
+\documentclass[logo]{fhgart}
 \title{Power to the People}
 \subtitle{Das Stromnetz der Zukunft}
-\author{Mathias Dalheimer \texttt{<md@gonium.net>}}
+\author{Mathias Dalheimer \texttt{<dalheimer@itwm.fhg.de>}}
 %% PDF SETUP
 \usepackage[pdftex, bookmarks, colorlinks, breaklinks,
 pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}  
@@ -19,18 +20,19 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 \widowpenalty=3000 % adjust for widows and orphans 10000 is max
 %% Font Adjustments
 %\usepackage[LY1]{fontenc}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 %\usepackage{adobegaramond}
 %\usepackage{gillsans}
 %\renewcommand{\rmdefault}{HoeflerText}
 
 % Use URW Garamond No. 8 as a default font. (getnonfreefonts)
-\usepackage[urw-garamond]{mathdesign}
+%\usepackage[urw-garamond]{mathdesign}
 %\renewcommand{\rmdefault}{ugm}
 % Optima as a sans serif font.
-\renewcommand*\sfdefault{uop}
+%\renewcommand*\sfdefault{uop}
 
 \newcommand*\imgwidth{0.8\textwidth}
+\newcommand*\euro{EUR}
 
 \usepackage{ifthen}
 \newboolean{InternalVersion}
@@ -52,7 +54,7 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 \usepackage{scrpage2}
 
 % Recalculate page setup based on new font.
-\KOMAoptions{DIV=last}
+%\KOMAoptions{DIV=last}
 %\KOMAoptions{draft=true}
 
 % Versals. 
@@ -80,10 +82,10 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 %% Main.
 \begin{document}
 \maketitle
-\clearscrheadfoot
-\automark[chapter]{section}
-\lehead[]{\pagemark\hskip.5cm\vrule\hskip.5cm\title}
-\rohead[]{\headmark\hskip.5cm\vrule\hskip.5cm\pagemark} 
+%\clearscrheadfoot
+%\automark[chapter]{section}
+%\lehead[]{\pagemark\hskip.5cm\vrule\hskip.5cm\title}
+%\rohead[]{\headmark\hskip.5cm\vrule\hskip.5cm\pagemark} 
 \title
 %\pagestyle{scrplain}
 %\begin{titlepage}
@@ -94,10 +96,10 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 %%\parindent.0cm
 %%\parskip.4cm
 %%\input{pagetwo}
-\parindent.4cm
-\parskip.0cm
-\pagestyle{scrheadings}
-
+%\parindent.4cm
+%\parskip.0cm
+%\pagestyle{scrheadings}
+%
 \section{Einleitung}
 
 
