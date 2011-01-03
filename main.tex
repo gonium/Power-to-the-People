@@ -32,7 +32,6 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 %\renewcommand*\sfdefault{uop}
 
 \newcommand*\imgwidth{0.8\textwidth}
-\newcommand*\euro{EUR}
 
 \usepackage{ifthen}
 \newboolean{InternalVersion}
@@ -71,6 +70,10 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 \usepackage{subfigure}
 
 \hyphenation{scho-oner Sur-vivor ap-pen-dix}
+
+\usepackage{marvosym} % bei der Schrift enthalten
+\newcommand*\euro{\textup{\EUR}}
+
 
 %% Chapterstyle
 %\renewcommand*{\chapterformat}{---\hskip.5cm\thechapter\hskip.5cm---}
@@ -188,7 +191,7 @@ leider zu stark:
     108ff]{schwab06elektroenergiesysteme}. Da Spitzenlastkraftwerke nur
     selten unter Volllast betrieben werden, ist der erzeugte Strom
     relativ teuer: Je nach Versorgungslage kann eine Kilowattstunde
-    $\euro 1,50$ kosten~\cite{wikipedia10regelleistung}\cite[S.
+    \euro $1,50$ kosten~\cite{wikipedia10regelleistung}\cite[S.
     60]{schwab06elektroenergiesysteme}. 
 
     Nicht in die aktive Netzregelung einbezogen sind Industriebetriebe
