@@ -144,7 +144,7 @@ leider zu stark:
     Abweichungen können zu großflächigen Stromausfällen führen. Es ist
     die Aufgabe der Stromnetzbetreiber, einen zuverlässigen Betrieb
     sicherzustellen. Dazu wird die Stromerzeugung permanent dem
-    Verbrauch angepasst~\cite{wikipedia10kraftwerksmanagement}. Es ist
+    Verbrauch angepasst~\cite[S. 33ff]{schwab06elektroenergiesysteme}. Es ist
     nicht möglich, beliebige Kapazitäten bei Bedarf an- und
     abzuschalten: Die Anfahrvorgänge von Kraftwerken dauern je nach
     Kraftwerkstyp zwischen wenigen Minuten (Wasserkraft- und
@@ -184,10 +184,12 @@ leider zu stark:
     Pumpspeicherkraftwerken oder Druckluftspeicherkraftwerke abgedeckt
     werden. Spitzenlastkraftwerke können ihre Leistung zum Teil bis zu
     20\% ihrer Nennleistung innerhalb einer Minute
-    ändern~\cite{wikipedia10spitzenlast}. Da Spitzenlastkraftwerke
-    nur selten unter Volllast betrieben werden, ist der erzeugte Strom
+    ändern~\cite{wikipedia10spitzenlast}\cite[S.
+    108ff]{schwab06elektroenergiesysteme}. Da Spitzenlastkraftwerke nur
+    selten unter Volllast betrieben werden, ist der erzeugte Strom
     relativ teuer: Je nach Versorgungslage kann eine Kilowattstunde
-    $\euro 1,50$ kosten~\cite{wikipedia10regelleistung}. 
+    $\euro 1,50$ kosten~\cite{wikipedia10regelleistung}\cite[S.
+    60]{schwab06elektroenergiesysteme}. 
 
     Nicht in die aktive Netzregelung einbezogen sind Industriebetriebe
     mit eigener Stromerzeugung, Windkraftanlagen, Photovoltaiksysteme
@@ -374,7 +376,7 @@ wieder in Strom verwandelt.  Üblicherweise werden Pumpspeicherkraftwerke
 so dimensioniert, dass sie über 4-8 Stunden ihre Leistung abgeben
 können. Dabei steht die Leistung innerhalb von Minuten zur Verfügung und
 kann in weiten Bereichen geregelt werden. Der Wirkungsgrad liegt bei ca.
-80~\%~\cite{wikipedia10pumpspeicher}.
+75~\%~\cite[S. 175]{schwab06elektroenergiesysteme}.
 
 Eine zweite Möglichkeit zur Stromspeicherung liegt in modernen
 Batteriespeichern. Es gibt derzeit erste Projekte, die den
@@ -456,7 +458,7 @@ Spitzenlast durch Demand Side Management verschoben werden.
     \hline
   \end{tabular}
   \caption{Prognose der Demand Side Management-Kapazitäten im Bereich
-  der UCTE. Angaben in GW}
+  der UCTE. Quelle: \cite{torriti10demand}}
   \label{tab:drforecast}
 \end{table}
 
@@ -783,7 +785,7 @@ zusätzlich auch einen "`Chumby"', vgl. Abbildung \ref{fig:chumby}.
     \caption{Der Chumby zeigt kleine Widgets an: Wetterbericht,
     Nachrichten und zukünftig auch den Stromverbrauch. Mit dem
     integrierten Internetradio ist er optimal als Küchenradio
-    einzusetzen.}
+    einzusetzen. Bild: CC-BY-SA-NC Mathias Dalheimer.}
     \label{fig:chumby}
   \end{center}
 \end{figure}
@@ -1059,20 +1061,29 @@ Rahmenbedingungen beachtet werden:
     Interesse der Kunden gestaltet werden. Die derzeitige Debatte um die
     Laufzeitverlängerungen für Atomkraftwerke zeigt, dass politische
     Entscheidungen nicht immer zu langfristig guten Lösungen führen und
-    auch die meisten Expertenaussagen nicht beachtet wurden.
+    auch die meisten Expertenaussagen nicht beachtet wurden. Hier müssen
+    konstruktive Vorschläge erarbeitet und auch an die politischen
+    Entscheidungsträger kommuniziert werden.
 \end{enumerate}
 
-Die Einführung von "`intelligenten"' Technologien in das Stromnetz ist
-aber auch eine hervorragende Spielwiese für alle Hacker und Nerds.  Hier
-gilt es, Gedanken umzusetzen, die sowieso in den Hackerspaces dieser
-Welt diskutiert werden\footnote{Warum definiert jeder Hackerspace ein
-eigenes Hausbussystem?}. Das Problem rein technologisch anzugehen wäre
-allerdings zu wenig. Sowohl ökonomische, ökologische als auch
-gesellschaftliche Überlegungen müssen mit einbezogen werden. Es wird
-auch immer mehr als eine Lösung geben. Insofern sind die idealen
-Voraussetzungen für ein Open-Source Ökosystem gegeben --- lasst uns
-diese Spielwiese nutzen!
+Das Stromnetz ist ein historisch gewachsenes System. Viele
+unterschiedliche Konzepte wurden kombiniert, ebenso wurden viele
+rechtliche Rahmenbedingungen geschaffen. Insofern ist eine Veränderung
+nur in kleinen Schritte möglich. Einzelne Komponenten werden
+nacheinander ausgetauscht und müssen natürlich gleichzeitig ein Teil des
+Gesamtkonzepts werden.
 
+Für dieses Problemfeld bieten sich Open Source-Lösungen an: Diese können
+aufgrund der offenen Spezifikationen und Quellcodes recht schnell an
+neue Gegebenheiten angepasst werden. Ebenso ist es möglich, diese
+Anpassungen dezentral durch viele Anbieter vornehmen zu lassen. Diese
+Flexibilität kommt sowohl den Verteilnetzbetreibern als auch den
+Geräteherstellern zugute. Gleichzeitig ist es elementar, auf bereits
+existierende Kommunikationsstandards wie TCP/IP zu setzen.
+
+In diesem Bericht wurde die Thematik des Stromhandels weitgehend
+ausser Acht gelassen. Hier sei auf den Bericht von Andreas Wagner
+(Fraunhofer ITWM) hingewiesen~\cite{wagner11market}.
 \bibliographystyle{plain}
 \bibliography{main}
 \end{document}
