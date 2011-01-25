@@ -69,7 +69,8 @@ pdftitle=\title,pdfauthor={Mathias Dalheimer},plainpages=false]{hyperref}
 \usepackage{blindtext}
 \usepackage{subfigure}
 
-\hyphenation{scho-oner Sur-vivor ap-pen-dix}
+\hyphenation{scho-oner Sur-vivor ap-pen-dix
+Strom-ver-brauchs-informationen}
 
 \usepackage{marvosym} % bei der Schrift enthalten
 \newcommand*\euro{\textup{\EUR}}
@@ -357,7 +358,7 @@ wünschenswert. Die Gründe hierfür liegen laut der Bundesregierung zum
 einen an Verzögerungen im Netzausbau und andererseits im Fehlen von
 Energiespeichern~\cite{bundesreg2010kleineanfrage}. Der Anteil des nicht
 eingespeisten regenerativen Stroms wird derzeit nicht erfasst. Dies ist
-umso bedauerlicher, als dass die Netzbetreiber als auch Betreiber von
+bedauerlich, da die Netzbetreiber auch Betreiber von
 Grundlastkraftwerken sind und so ein Zielkonflikt entsteht.
 
 Zusammenfassend lässt sich festhalten: Erneuerbare Energien --- so
@@ -381,8 +382,31 @@ können. Dabei steht die Leistung innerhalb von Minuten zur Verfügung und
 kann in weiten Bereichen geregelt werden. Der Wirkungsgrad liegt bei ca.
 75~\%~\cite[S. 175]{schwab06elektroenergiesysteme}.
 
-Eine zweite Möglichkeit zur Stromspeicherung liegt in modernen
-Batteriespeichern. Es gibt derzeit erste Projekte, die den
+Strom kann auch in Druckluftspeichern zwischengespeichert werden. Diese
+Technik ist jedoch nicht weit verbreitet --- weltweit existieren nur
+zwei Kraftwerke dieser Bauart, eines davon im niedersächsischen
+Huntorf~\cite{web11huntorf}. Druckluftspeicher benötigen geologisch geeignete,
+luftdichte Salzstöcke und können daher nicht überall errichtet werden.
+Entlang der Nordseeküste könnten allerdings in Zukunft entsprechende
+Standorte genutzt werden, um Erzeugungsspitzen von Windanlagen
+aufzunehmen und später wieder an das Netz abzugeben. 
+
+In Schwungrädern kann ebenso Strom zwischengespeichert werden. Die
+Energiedichte ist hier sehr hoch, allerdings kann in Schwungrädern nur
+relativ wenig Energie gespeichert werden. Schwungräder werden daher
+überwiegend zur Netzstabilisierung eingesetzt.
+
+Eine weitere Möglichkeit zur Stromspeicherung liegt in modernen
+Batteriespeichern. Hier gibt es verschiedene Technologien: Neben
+Lithium-Ionen-Batterien werden auch Redox-Flow-Zellen oder
+Natrium-Schwefel-Hochtemperaturzellen in Betracht gezogen. Allen
+Speichern ist gemeinsam, dass Strom in chemische Energie umgewandelt
+wird. Je nach Batterietyp erfordert die Ladung des Speichers eine
+komplexe Laderegelung und spezielle Sicherheitsvorkehrungen. Die
+Lebensdauer von Batterien wird erheblich durch die Betriebsparameter
+beeinflusst.
+
+Es gibt derzeit erste Projekte, die den
 großtechnischen Einsatz von Lithion-Ionen-Batterien
 erproben~\cite{braun09lithium}. Dabei werden dezentral Batteriespeicher
 installiert, die im Falle eines Überschusses Strom aufnehmen und später
@@ -427,8 +451,10 @@ Lasten im Netz der momentanen Erzeugung anzupassen. Üblicherweise sind
     vermieden.
   \item \emph{Lasttalauffüllung:} Falls Strom zu Grenzkosten angeboten
     werden kann, lohnt es sich, Verbraucher zu diesem Zeitpunkt zu
-    betreiben. Ein Beispiel hierfür ist das Aufladen von
-    Nachtspeicherheizungen, da nachts die Last im Netz gering ist.
+    betreiben. Ein Tiefkühlhaus könnte in solchen Phasen als
+    Energiespeicher dienen, in dem die Temperatur abgesenkt wird. Durch
+    diese Temperaturabsenkung wird dann später weniger Strom benötigt.
+    Gleichzeitig werden eventuelle Überschüsse sinnvoll genutzt.
   \item \emph{Lastverschiebung:} Generell können natürlich Lasten im
     Stromnetz auf einen anderen Zeitpunkt verschoben werden, um
     vielfältige Ziele zu erreichen. Speziell bei kurzfristigen
@@ -482,7 +508,9 @@ Gründe hierfür sind vielfältig:
   \item Es gibt kaum finanzielle Anreize für Privathaushalte, um in
     diese Technologien zu investieren. Gegenwärtig sind einzig
     Nachtstromtarife darauf zugeschnitten, den Verbrauch in Nebenzeiten
-    zu fördern.
+    zu fördern. Diese Tarife fördern jedoch eher den Betrieb von
+    Grundlastkraftwerken als den sinnvollen Verbrauch von Strom zu
+    Zeiten hoher Ökostromproduktion.
 \end{enumerate}
 
 
@@ -636,7 +664,7 @@ vergleichbaren Situation kommt.
 Wie oben bereits dargestellt, ist Demand Side Management eine
 interessante Technik vor allem für die Verteilnetzbetreiber. Diese
 müssen den Strom von privaten Photovoltaikanlagen aufnehmen und
-verteilen. In der Westpfalz kommt es momentan in den ersten Gemeinden zu
+verteilen. In ländlichen Gegenden kommt es momentan in den ersten Gemeinden zu
 einem Anschlussstop für neue PV-Anlagen, weil das Leitungsnetz die
 zusätzlichen Einspeisungen nicht aufnehmen kann. Neben der dezentralen
 Speicherung von PV-Strom kann auch Demand Side Management dabei helfen,
@@ -669,9 +697,7 @@ Momentan werden bis zu 1000 Haushalte in Kaiserslautern und Umgebung
 mit der Technik ausgerüstet. Die Geräte müssen sich also im
 Praxiseinsatz bewähren. Da die Installation von Geräten durch
 Handwerker aus der Region erfolgt, ist eine möglichst gute
-Installationsunterstützung durch Softwarewerkzeuge notwendig. Die
-bisherigen Erfahrungen zeigen, dass vor allem die Integration der Geräte
-in die privaten Heimnetzwerke unserer Projektteilnehmer aufwändig ist.
+Installationsunterstützung durch Softwarewerkzeuge notwendig. 
 
 \subsection{Messen und Verstehen}\label{sub:messenverstehen}
 
@@ -732,7 +758,12 @@ Projektteilnehmer eine schnelle Visualisierung ihrer Daten in Anspruch
 nehmen können, ohne eine eigene Infrastruktur betreiben zu müssen. Mit
 dem Volkszähler~\cite{web:volkszaehler} ist eine Alternative zum Flukso
 verfügbar, bei der die anonyme Speicherung von Daten im Vordergrund
-steht.
+steht. Es ist auch denkbar, alle Messdaten lokal bei den
+Teilnehmern aufzubereiten. Dies würde dann auf dem Chumby (s.u.)
+geschehen. Zur langfristigen Datenspeicherung sind die in unseren
+Geräten verbauten Flashspeicher allerdings nicht geeignet. Falls in
+Zukunft kleine und billige SSD-basierte Speicher verfügbar sind, kann
+einfach auf eine lokale Datenhaltung umgestellt werden.
 
 Aber auch die kommerziellen und von den Messstellenbetreibern
 eingesetzten Smart Meter müssen eine lokal auslesbare
@@ -811,19 +842,23 @@ Zukunft spezielle Monitoring-Möglichkeiten anbieten. Dabei wird über
 eine lokale Wettervorhersage der mögliche Ertrag für den kommenden Tag
 prognostiziert und dann mit der tatsächlichen Produktion verglichen.
 Kommt es hier zu größeren Abweichungen, kann der Eigentümer der Anlage
-verständigt werden.
+verständigt werden. Diese Informationen lassen sich auch zur Optimierung
+des Eigenstromverbrauchs verwenden: Wenn sich abschätzen lässt, wann
+entsprechende Strommengen produziert werden, kann man Hinweise zur
+Steuerung von Stromverbrauchern geben. So lässt man dann die
+Waschmaschine vielleicht nicht morgens, sondern mittags laufen, wenn
+einen Tag im Voraus klar ist, wann die Sonne scheinen wird.
 
 \subsection{Regelung von Verbrauchern}\label{sub:steuern}
 
-Der nächste Schritt ist das Steuern von Verbrauchern im Haushalt.
-Mit Hilfe von meteorologischen Modellen ist es möglich, die
+Der nächste Schritt ist das automatische Steuern von Verbrauchern im
+Haushalt. Mit Hilfe von meteorologischen Modellen ist es möglich, die
 Stromproduktion auf Tagesfrist recht genau vorherzusagen. Wenn also
 morgen Mittag der Wind weht oder die Sonne scheint, führt dies auch zu
 einer erhöhten Stromproduktion. Diese Information kann dann einen Tag im
-Voraus zu den Haushalten transportiert werden. Die Nutzer können dann
-diese Information angezeigt bekommen und ihr Verhalten entsprechend
-anpassen --- für eine Spülmaschine ist es meist recht egal, ob sie
-morgens oder mittags läuft.
+Voraus zu den Haushalten transportiert und angezeigt werden. Die Nutzer
+können ihr Verhalten entsprechend anpassen --- für eine Spülmaschine ist
+es meist recht egal, ob sie morgens oder mittags läuft.
 
 Natürlich ist dies aber nicht genug, denn eigentlich sollte diese
 Regelung automatisch passieren. Leider bieten die meisten
@@ -848,8 +883,8 @@ Langfristig ist eine Lösung wünschenswert, die eine IP-basierte
 Kommunikationsinfrastruktur auf kleinen Mikrocontrollern umsetzt. Eine
 solche Lösung wäre bezahlbar, gleichzeitig könnte durch die Verwendung
 von IPv6 das Problem der Adressvergabe an die Endgeräte gelöst werden.
-Meine eigenen Experimente mit 6LoWPAN und funkbasierter Kommunikation
-auf der Basis von 868 MHz zeigen, dass eine solche Lösung sehr wohl
+Unsere Prototypen auf der Basis von 6LoWPAN und funkbasierter Kommunikation
+(868 MHz) zeigen, dass eine solche Lösung sehr wohl
 kostengünstig umzusetzen ist\footnote{Eine komplette Dokumentation
 inklusive Kalkulation der Materialkosten des
 Prototyps ist unter
@@ -870,9 +905,11 @@ ein Relais schalten, siehe Abb. \ref{fig:raven-adapter}.  Als
 Betriebssystem benutzt OctoBus Contiki~\cite{yazar09efficient}.
 Alternativ ist auch mit Ethersex eine etablierte Lösung
 verfügbar~\cite{web:ethersex}. Da hochintegrierte Funkchipsätze sowie leistungsfähige
-8Bit-Mikrocontroller verfügbar sind, halte ich es für realistisch, eine
-Funkschaltsteckdose für 20 Euro Materialkosten herstellen zu
-können.
+8Bit-Mikrocontroller verfügbar sind, kann eine
+Funkschaltsteckdose für 20 Euro Materialkosten hergestellt werden.
+Momentan arbeiten wir mit Partnern daran, eine Kleinserie von 300
+Funkschaltsteckdosen-Sets zu entwickeln und zu fertigen. Diese Technik
+wird dann auch in unseren Teilnehmerhaushalten installiert.
 
 Für das Projekt optimal sind Haushaltsgeräte, die einerseits recht viel
 Strom im Betrieb verbrauchen und bei denen andererseits das Verzögern
@@ -882,12 +919,12 @@ Wärmepumpen. Sowohl Waschmaschinen als auch Spülmaschinen sind
 allerdings nicht einfach einzubinden, da diese vor dem Betrieb natürlich
 beladen werden müssen und eventuell auch ein Wasserhahn geöffnet werden
 muss. Daher liegt der Schwerpunkt unserer Arbeit zunächst einmal auf
-Tiefkühltruhen und Wärmepumpen. Die Einbindung von weiteren Geräten
+Kühlgeräten und Wärmepumpen. Die Einbindung von weiteren Geräten
 (vlg. \cite[S. 22]{wiechmann08lastmanagement}) ist aber vorgesehen.
 
 Wir greifen dabei nicht in die interne Regelung der Geräte
-ein\footnote{Es wäre für unsere Teilnehmer wohl nicht akzeptabel, wenn
-ich mit meinem Lötkolben an ihren Kühlschränken herumbastele ;-)}. Für
+ein\footnote{Es wäre für unsere Teilnehmer wohl nicht akzeptabel,
+Haushaltsgeräte konstruktiv zu verändern.}. Für
 Kühlschränke und Gefriertruhen funktioniert folgenden Ansatz: Die
 Geräte werden über einen Zwischenstecker von der Stromversorgung
 getrennt. In der Folge steigt die Innentemperatur an. Wenn nun der
@@ -974,6 +1011,12 @@ als regelbare Geräte eingebunden~\cite{ossenbrinck10herstellung}.
 %Als Geräte favorisieren sie Tiefkühlanlagen.
 %
 
+Basierend auf den hier dargestellten Projektergebnissen gehen wir davon
+aus, eine entsprechende Überwachungsfunktionalität --- je nach Ausbaustufe ---
+zwischen 150 und 400 Euro anbieten zu können. Dazu kommt dann noch ein
+Datenabo, da die Wetterprognosen in die Geräteüberwachung einfließen.
+Dabei ist unsere Lösung herstellerunabhängig.
+
 \subsection{Virtueller Verbraucher}\label{sub:virtuellerverbraucher}
 Natürlich ist es für einen einzelnen Haushalt nicht möglich,
 signifikanten Einfluss auf das Stromnetz zu haben. Allerdings gibt es ja
@@ -1016,6 +1059,16 @@ belassen und die Gründung einer Genossenschaft fördern. Derzeit sind wir
 jedoch noch nicht soweit, dass wir ein abschliessendes Konzept für ein
 Geschäftsmodell haben.
 
+Ein alternatives Konzept --- das derzeit auch meistens im Rahmen der
+E-Energy-Projekte diskutiert wird --- sind flexible Stromtarife. Dabei
+ändert sich der Preis für eine Kilowattstunde Strom in Abhängigkeit
+davon, wie die Situation im Stromnetz gerade ist. Die Stromkunden sollen
+dann ihre Geräte entsprechend steuern. Im Gegensatz zu einem virtuellen
+Verbraucher stärkt das Konzept flexibler Strompreise jedoch die großen
+Stromanbieter und damit die gegenwärtigen Marktstrukturen. Ein virtueller
+Verbraucher verlagert hingegen die Marktmacht in Richtung der
+Stromkunden und kleineren Stadtwerke.
+
 Nicht vergessen darf man an dieser Stelle auch die Probleme des Systemdesigns:
 Als großes verteiltes System muss die Umsetzung zu einem stabilen
 Systemverhalten führen. Ausfälle von einzelnen Systemkomponenten dürfen
@@ -1027,6 +1080,7 @@ den Haushalten vorgegeben. Die einzelnen Haushalte entscheiden dann
 autonom, wie einzelne Geräte zu steuern sind.  Die Verteilung des
 Lastprofils kann dabei durch standardisierte Protokolle über das
 Internet erfolgen.
+
 
 \section{Schlussfolgerungen}
 Das Smart Grid, "`intelligentes Stromnetz"', ist eines der Themen, welche
@@ -1087,6 +1141,13 @@ existierende Kommunikationsstandards wie TCP/IP zu setzen.
 In diesem Bericht wurde die Thematik des Stromhandels weitgehend
 ausser Acht gelassen. Hier sei auf den Bericht von Andreas Wagner
 (Fraunhofer ITWM) hingewiesen~\cite{wagner11market}.
+
+\section*{Danksagung}\label{danksagung}
+Mein Dank für Anregungen und Diskussionen gilt Dr. Franz-Josef Pfreundt,
+Ely Wagner Aguiar de Oliveira, Matthias Klein, Stephan Platz, Simon
+Birnbach sowie Dominik Keller. Das Projekt mySmartGrid wird durch das
+Land Rheinland-Pfalz im Rahmen des Konjunkturprogramm II geförtert.
+
 \bibliographystyle{plain}
 \bibliography{main}
 \end{document}
